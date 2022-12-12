@@ -17,8 +17,7 @@
     },
     "license": "ANTI-CAPITALIST SOFTWARE LICENSE (v 1.4)",
     "maintainer": {
-        "name": "oufmilo",
-        
+        "name": "oufmilo"        
     },
     "requirements": {
         "yunohost": ">= 4.3.0"
