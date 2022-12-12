@@ -1,25 +1,24 @@
 {
-    "name": "Example app",
-    "id": "example",
+    "name": "BookWyrm",
+    "id": "bookwyrm",
     "packaging_format": 1,
     "description": {
-        "en": "Explain in *a few (10~15) words* the purpose of the app or what it actually does (it is meant to give a rough idea to users browsing a catalog of 100+ apps)",
-        "fr": "Expliquez en *quelques* (10~15) mots l'utilité de l'app ou ce qu'elle fait (l'objectif est de donner une idée grossière pour des utilisateurs qui naviguent dans un catalogue de 100+ apps)"
+        "en": "BookWyrm is a platform for social reading. You can use it to track what you're reading, review books, and follow your friends. It isn't primarily meant for cataloguing or as a data-source for books, but it does do both of those things to some degree.",
+        "fr": "BookWyrm est une plateforme de lecture sociale. Vous pouvez l'utiliser pour suivre ce que vous lisez, critiquer des livres et suivre vos amis. Il ne s'agit pas d'un catalogue ou d'une source de données pour les livres, mais il fait ces deux choses dans une certaine mesure."
     },
-    "version": "1.0~ynh1",
-    "url": "https://example.com",
+    "version": "0.5.3~ynh1",
+    "url": "https://github.com/bookwyrm-social/bookwyrm",
     "upstream": {
-        "license": "free",
-        "website": "https://example.com",
-        "demo": "https://demo.example.com",
-        "admindoc": "https://yunohost.org/packaging_apps",
-        "userdoc": "https://yunohost.org/apps",
-        "code": "https://some.forge.com/example/example"
+        "license": "ANTI-CAPITALIST SOFTWARE LICENSE (v 1.4)",
+        "website": "https://joinbookwyrm.com/fr/",
+        "demo": "https://joinbookwyrm.com/fr/",
+        "admindoc": "https://docs.joinbookwyrm.com/",
+        "code": "https://github.com/bookwyrm-social/bookwyrm"
     },
-    "license": "free",
+    "license": "ANTI-CAPITALIST SOFTWARE LICENSE (v 1.4)",
     "maintainer": {
-        "name": "John doe",
-        "email": "john.doe@example.com"
+        "name": "oufmilo",
+        
     },
     "requirements": {
         "yunohost": ">= 4.3.0"
@@ -27,21 +26,15 @@
     "multi_instance": true,
     "services": [
         "nginx",
-        "php7.3-fpm",
-        "mysql"
+        "postgresql"
     ],
     "arguments": {
-        "install" : [
+        "install": [
             {
                 "name": "domain",
                 "type": "domain"
             },
-            {
-                "name": "path",
-                "type": "path",
-                "example": "/example",
-                "default": "/example"
-            },
+   
             {
                 "name": "is_public",
                 "type": "boolean",
@@ -60,14 +53,6 @@
             {
                 "name": "admin",
                 "type": "user"
-            },
-            {
-                "name": "password",
-                "type": "password",
-                "help": {
-                    "en": "Use the help field to add an information for the admin about this question.",
-                    "fr": "Utilisez le champ aide pour ajouter une information à l'intention de l'administrateur à propos de cette question."
-                }
             }
         ]
     }
