@@ -5,17 +5,25 @@ It shall NOT be edited by hand.
 
 # BookWyrm pour YunoHost
 
-[![Niveau d'intégration](https://dash.yunohost.org/integration/example.svg)](https://dash.yunohost.org/appci/app/example) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/example.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/example.maintain.svg)  
-[![Installer Example app avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=BookWyrm_ynh)
+[![Niveau d'intégration](https://dash.yunohost.org/integration/bookwyrm.svg)](https://dash.yunohost.org/appci/app/bookwyrm) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/bookwyrm.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/bookwyrm.maintain.svg)  
+[![Installer BookWyrm avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=bookwyrm)
 
 *[Read this readme in english.](./README.md)*
 
-> *Ce package vous permet d'installer Example app rapidement et simplement sur un serveur YunoHost.
+> *Ce package vous permet d'installer BookWyrm rapidement et simplement sur un serveur YunoHost.
 Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l'installer et en profiter.*
 
 ## Vue d'ensemble
 
-BookWyrm est un réseau social qui vous permet de suivre vos lectures, de parler de livres, d'écrire des critiques et de découvrir vos prochaines lectures. Federation permet aux utilisateurs de BookWyrm de rejoindre de petites communautés de confiance qui peuvent se connecter entre elles et avec d'autres services ActivityPub comme Mastodon et Pleroma.
+Some long and extensive description of what the app is and does, lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+### Features
+
+- Ut enim ad minim veniam, quis nostrud exercitation ullamco ;
+- Laboris nisi ut aliquip ex ea commodo consequat ;
+- Duis aute irure dolor in reprehenderit in voluptate ;
+- Velit esse cillum dolore eu fugiat nulla pariatur ;
+- Excepteur sint occaecat cupidatat non proident, sunt in culpa."
 
 
 **Version incluse :** 0.5.3~ynh1
@@ -24,17 +32,29 @@ BookWyrm est un réseau social qui vous permet de suivre vos lectures, de parler
 
 ## Captures d'écran
 
-![Capture d'écran de Example app](./doc/screenshots/BookWyrm-snap.PNG)
+![Capture d'écran de BookWyrm](./doc/screenshots/BookWyrm-snap.PNG)
 
 ## Avertissements / informations importantes
 
+* Any known limitations, constrains or stuff not working, such as (but not limited to):
+    * requiring a full dedicated domain ?
+    * architectures not supported ?
+    * not-working single-sign on or LDAP integration ?
+    * the app requires an important amount of RAM / disk / .. to install or to work properly
+    * etc...
+
+* Other infos that people should be aware of, such as:
+    * any specific step to perform after installing (such as manually finishing the install, specific admin credentials, ...)
+    * how to configure / administrate the application if it ain't obvious
+    * upgrade process / specificities / things to be aware of ?
+    * security considerations ?
 
 ## Documentations et ressources
 
 * Site officiel de l'app : <https://joinbookwyrm.com/fr/>
 * Documentation officielle de l'admin : <https://docs.joinbookwyrm.com/>
 * Dépôt de code officiel de l'app : <https://github.com/bookwyrm-social/bookwyrm>
-* Documentation YunoHost pour cette app : <https://yunohost.org/bookwyrm_example>
+* Documentation YunoHost pour cette app : <https://yunohost.org/app_bookwyrm>
 * Signaler un bug : <https://github.com/YunoHost-Apps/bookwyrm_ynh/issues>
 
 ## Informations pour les développeurs
@@ -46,7 +66,7 @@ Pour essayer la branche testing, procédez comme suit.
 ``` bash
 sudo yunohost app install https://github.com/YunoHost-Apps/bookwyrm_ynh/tree/testing --debug
 ou
-sudo yunohost app upgrade example -u https://github.com/YunoHost-Apps/bookwyrm_ynh/tree/testing --debug
+sudo yunohost app upgrade bookwyrm -u https://github.com/YunoHost-Apps/bookwyrm_ynh/tree/testing --debug
 ```
 
 **Plus d'infos sur le packaging d'applications :** <https://yunohost.org/packaging_apps>
