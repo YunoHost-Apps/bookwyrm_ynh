@@ -9,7 +9,7 @@
     "version": "0.5.3~ynh1",
     "url": "https://github.com/bookwyrm-social/bookwyrm",
     "upstream": {
-        "license": "ANTI-CAPITALIST SOFTWARE LICENSE (v 1.4)",
+        "license": "AGPL-3.0-or-later",
         "website": "https://joinbookwyrm.com/fr/",
         "demo": "https://joinbookwyrm.com/fr/",
         "admindoc": "https://docs.joinbookwyrm.com/",
