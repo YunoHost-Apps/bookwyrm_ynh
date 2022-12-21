@@ -5,8 +5,8 @@ It shall NOT be edited by hand.
 
 # BookWyrm pour YunoHost
 
-[![Niveau d'intégration](https://dash.yunohost.org/integration/example.svg)](https://dash.yunohost.org/appci/app/example) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/example.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/example.maintain.svg)  
-[![Installer Example app avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=BookWyrm_ynh)
+[![Niveau d'intégration](https://dash.yunohost.org/integration/bookwyrm.svg)](https://dash.yunohost.org/appci/app/bookwyrm) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/bookwyrm.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/bookwyrm.maintain.svg)  
+[![Installer bookwyrm app avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=BookWyrm_ynh)
 
 *[Read this readme in english.](./README.md)*
 
@@ -24,7 +24,7 @@ BookWyrm est un réseau social qui vous permet de suivre vos lectures, de parler
 
 ## Captures d'écran
 
-![Capture d'écran de Example app](./doc/screenshots/BookWyrm-snap.PNG)
+![Capture d'écran de Example app](./doc/screenshots/screenshot-bookwyrm.jpg)
 
 ## Avertissements / informations importantes
 
