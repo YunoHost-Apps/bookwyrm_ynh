@@ -5,7 +5,7 @@
 #=================================================
 
 # dependencies used by the app
-pkg_dependencies="deb1 deb2 php$YNH_DEFAULT_PHP_VERSION-deb1 php$YNH_DEFAULT_PHP_VERSION-deb2"
+pkg_dependencies="postgresql redis nginx python3-venv libpq-dev php$YNH_DEFAULT_PHP_VERSION"
 
 #=================================================
 # PERSONAL HELPERS
