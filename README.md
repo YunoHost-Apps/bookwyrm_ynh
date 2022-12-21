@@ -5,7 +5,7 @@ It shall NOT be edited by hand.
 
 # BookWyrm for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/example.svg)](https://dash.yunohost.org/appci/app/example) ![Working status](https://ci-apps.yunohost.org/ci/badges/example.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/example.maintain.svg)  
+[![Integration level](https://dash.yunohost.org/integration/bookwyrm.svg)](https://dash.yunohost.org/appci/app/bookwyrm) ![Working status](https://ci-apps.yunohost.org/ci/badges/bookwyrm.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/bookwyrm.maintain.svg)  
 [![Install Example app with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=BookWyrm_ynh)
 
 *[Lire ce readme en français.](./README_fr.md)*
