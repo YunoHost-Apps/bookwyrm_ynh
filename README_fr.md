@@ -24,7 +24,7 @@ BookWyrm est un réseau social qui vous permet de suivre vos lectures, de parler
 
 ## Captures d'écran
 
-![Capture d'écran de Example app](./doc/screenshots/BookWyrm-snap.PNG)
+![Capture d'écran de Example app](./doc/screenshots/screenshot-bookwyrm.jpg)
 
 ## Avertissements / informations importantes
 
