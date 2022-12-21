@@ -3,8 +3,8 @@
     "id": "bookwyrm",
     "packaging_format": 1,
     "description": {
-        "en": "BookWyrm is a platform for social reading. You can use it to track what you're reading, review books, and follow your friends. It isn't primarily meant for cataloguing or as a data-source for books, but it does do both of those things to some degree.",
-        "fr": "BookWyrm est une plateforme de lecture sociale. Vous pouvez l'utiliser pour suivre ce que vous lisez, critiquer des livres et suivre vos amis. Il ne s'agit pas d'un catalogue ou d'une source de données pour les livres, mais il fait ces deux choses dans une certaine mesure."
+        "en": "BookWyrm is a platform for social reading. You can use it to track what you're reading, review books, and follow your friends.",
+        "fr": "BookWyrm est une plateforme de lecture sociale. Vous pouvez l'utiliser pour suivre ce que vous lisez, critiquer des livres et suivre vos amis."
     },
     "version": "0.5.3~ynh1",
     "url": "https://github.com/bookwyrm-social/bookwyrm",
@@ -15,7 +15,7 @@
         "admindoc": "https://docs.joinbookwyrm.com/",
         "code": "https://github.com/bookwyrm-social/bookwyrm"
     },
-    "license": "ANTI-CAPITALIST SOFTWARE LICENSE (v 1.4)",
+    "license": "AGPL-3.0-or-later",
     "maintainer": {
         "name": "oufmilo"
     },
