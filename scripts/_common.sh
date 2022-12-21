@@ -5,7 +5,7 @@
 #=================================================
 
 # dependencies used by the app
-pkg_dependencies="postgresql redis nginx python3-venv libpq-dev php$YNH_DEFAULT_PHP_VERSION"
+pkg_dependencies="redis nginx python3-venv libpq-dev php$YNH_DEFAULT_PHP_VERSION"
 
 #=================================================
 # PERSONAL HELPERS
