@@ -15,7 +15,7 @@ Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour
 
 ## Vue d'ensemble
 
-BookWyrm is a social network for tracking your reading, talking about books, writing reviews, and discovering what to read next.
+BookWyrm est un réseau social pour garder la trace de vos lectures, parler de livres, écrire des critiques et découvrir quoi lire ensuite.
 
 
 **Version incluse :** 0.5.3~ynh1
