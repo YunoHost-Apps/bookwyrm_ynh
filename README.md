@@ -29,11 +29,6 @@ Some long and extensive description of what the app is and does, lorem ipsum dol
 **Shipped version:** 0.5.3~ynh1
 
 **Demo:** https://joinbookwyrm.com/fr/
-
-## Screenshots
-
-![Screenshot of BookWyrm](./doc/screenshots/BookWyrm-snap.jpg)
-
 ## Disclaimers / important information
 
 * Any known limitations, constrains or stuff not working, such as (but not limited to):
