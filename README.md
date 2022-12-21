@@ -23,7 +23,7 @@ BookWyrm is a social network for tracking your reading, talking about books, wri
 
 ## Screenshots
 
-![Screenshot of Example app](./doc/screenshots/BookWyrm-snap.PNG)
+![Screenshot of Example app](./doc/screenshots/screenshot-bookwyrm.jpg)
 
 ## Disclaimers / important information
 
