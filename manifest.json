@@ -3,8 +3,8 @@
     "id": "bookwyrm",
     "packaging_format": 1,
     "description": {
-        "en": "BookWyrm is a platform for social reading. You can use it to track what you're reading, review books, and follow your friends.",
-        "fr": "BookWyrm est une plateforme de lecture sociale. Vous pouvez l'utiliser pour suivre ce que vous lisez, critiquer des livres et suivre vos amis."
+        "en": "BookWyrm is a platform for social reading.",
+        "fr": "BookWyrm est une plateforme de lecture sociale."
     },
     "version": "0.5.3~ynh1",
     "url": "https://github.com/bookwyrm-social/bookwyrm",
