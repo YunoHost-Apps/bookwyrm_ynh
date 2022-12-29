@@ -3,8 +3,8 @@
     "id": "bookwyrm",
     "packaging_format": 1,
     "description": {
-        "en": "$app is a platform for social reading.",
-        "fr": "$app est une plateforme de lecture sociale."
+        "en": "BookWyrm is a platform for social reading.",
+        "fr": "BookWyrm est une plateforme de lecture sociale."
     },
     "version": "0.5.3~ynh1",
     "url": "https://github.com/bookwyrm-social/bookwyrm",
@@ -33,7 +33,7 @@
                 "name": "domain",
                 "type": "domain"
             },
-   
+
             {
                 "name": "is_public",
                 "type": "boolean",
