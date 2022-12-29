@@ -109,6 +109,13 @@ chmod 750 "$final_path"
 chmod -R o-rwx "$final_path"
 chown -R $app:www-data "$final_path"
 
+ynh_add_config --template="dockerless-run.sh" --destination="$final_path/dockerless-run.sh"
+chmod 700 "$final_path/dockerless-run.sh"
+chown $app:$app "$final_path/dockerless-run.sh"
+
+mkdir "$final_path/venv"
+python3 -m venv "$final_path/venv"
+$final_path/venv/bin/pip3 install -r "$final_path/requirements.txt"
 
 #=================================================
 # NGINX CONFIGURATION
@@ -155,7 +162,7 @@ ynh_add_systemd_config
 ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
 
 
-yunohost service add $app --description="A short description of the app" --log="/var/log/$app/$app.log"
+yunohost service add $app --description="BookWyrm service" --log="/var/log/$app/$app.log"
 
 
 #=================================================

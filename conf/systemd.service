@@ -7,9 +7,7 @@ Type=simple
 User=__APP__
 Group=__APP__
 WorkingDirectory=__FINALPATH__/
-ExecStart=__FINALPATH__/dockerless-run.sh
-StandardOutput=append:/var/log/__APP__/__APP__.log
-StandardError=inherit
+ExecStart=/bin/bash __FINALPATH__/dockerless-run.sh
 
 # Sandboxing options to harden security
 # Depending on specificities of your service/app, you may need to tweak these
