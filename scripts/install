@@ -109,6 +109,20 @@ chmod 750 "$final_path"
 chmod -R o-rwx "$final_path"
 chown -R $app:www-data "$final_path"
 
+#=================================================
+# CREATE LOG FILE
+#=================================================
+ynh_script_progression --message="Creating log file..." --weight=1
+
+mkdir -p "/var/log/$app/"
+touch "/var/log/$app/${app}.log"
+chown -R $app: "/var/log/$app/"
+
+#=================================================
+# SCRIPT AND DEP INIT
+#=================================================
+ynh_script_progression --message="Installing service script..." --weight=1
+
 ynh_add_config --template="dockerless-run.sh" --destination="$final_path/dockerless-run.sh"
 chmod 700 "$final_path/dockerless-run.sh"
 chown $app:$app "$final_path/dockerless-run.sh"
