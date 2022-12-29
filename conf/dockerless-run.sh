@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -a; source __FINALPATH__/.env; set +a
+
 # stop if one process fails
 set -e
 
