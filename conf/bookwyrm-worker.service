@@ -1,0 +1,15 @@
+
+[Unit]
+Description=__APP__ celery worker
+After=redis.service postgresql.service
+PartOf=__APP__.target
+
+[Service]
+User=__APP__
+Group=__APP__
+WorkingDirectory=__FINALPATH__/
+EnvironmentFile=__FINALPATH__/.env
+ExecStart=__FINALPATH__/venv/bin/celery -A celerywyrm worker -l info -Q high_priority,medium_priority,low_priority
+
+[Install]
+WantedBy=multi-user.target
