@@ -32,7 +32,7 @@ admin=$YNH_APP_ARG_ADMIN
 
 app=$YNH_APP_INSTANCE_NAME
 
-admin_mail=$(ynh_user_get_info --username=$admin --key=mail)
+admin_mail=$(ynh_user_get_info --username=$admin --key=username)
 
 #=================================================
 # CHECK IF THE APP CAN BE INSTALLED WITH THESE ARGS
