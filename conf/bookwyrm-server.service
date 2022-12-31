@@ -1,0 +1,15 @@
+
+[Unit]
+Description=__APP__ application server
+After=redis.service postgresql.service
+PartOf=__APP__.target
+
+[Service]
+User=__APP__
+Group=__APP__
+WorkingDirectory=__FINALPATH__/
+EnvironmentFile=__FINALPATH__/.env
+ExecStart=__FINALPATH__/venv/bin/gunicorn bookwyrm.wsgi:application --bind 0.0.0.0:__PORT__
+
+[Install]
+WantedBy=multi-user.target

@@ -6,7 +6,7 @@
         "en": "BookWyrm is a platform for social reading.",
         "fr": "BookWyrm est une plateforme de lecture sociale."
     },
-    "version": "0.5.3~ynh1",
+    "version": "0.5.3~ynh1.0.5",
     "url": "https://github.com/bookwyrm-social/bookwyrm",
     "upstream": {
         "license": "AGPL-3.0-or-later",

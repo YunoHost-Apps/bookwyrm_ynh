@@ -1,0 +1,15 @@
+
+[Unit]
+Description=__APP__ celery beat process
+After=redis.service postgresql.service
+PartOf=__APP__.target
+
+[Service]
+User=__APP__
+Group=__APP__
+WorkingDirectory=__FINALPATH__/
+EnvironmentFile=__FINALPATH__/.env
+ExecStart=__FINALPATH__/venv/bin/celery -A celerywyrm beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler
+
+[Install]
+WantedBy=multi-user.target

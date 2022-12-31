@@ -22,6 +22,7 @@ language=$(ynh_app_setting_get --app=$app --key=language)
 admin=$(ynh_app_setting_get --app=$app --key=admin)
 final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 db_name=$(ynh_app_setting_get --app=$app --key=db_name)
+port=$(ynh_app_setting_get --app=$app --key=port)
 
 #=================================================
 # CHECK VERSION
@@ -56,7 +57,9 @@ ynh_abort_if_errors
 #=================================================
 ynh_script_progression --message="Stopping a systemd service..." --weight=1
 
-ynh_systemd_action --service_name=$app --action="stop" --log_path="/var/log/$app/$app.log"
+ynh_systemd_action --action="stop" --service_name="${app}-beat" --log_path="systemd" --line_match="Stopped"
+ynh_systemd_action --action="stop" --service_name="${app}-server" --log_path="systemd" --line_match="Stopped"
+ynh_systemd_action --action="stop" --service_name="${app}-worker" --log_path="systemd" --line_match="Stopped"
 
 #=================================================
 # ENSURE DOWNWARD COMPATIBILITY
@@ -152,8 +155,12 @@ ynh_install_app_dependencies $pkg_dependencies
 #=================================================
 ynh_script_progression --message="Upgrading systemd configuration..." --weight=1
 
+ynh_add_config --template="../conf/${app}.target" --destination="/etc/systemd/system/$app.target"
+
 # Create a dedicated systemd config
-ynh_add_systemd_config
+ynh_add_systemd_config --service="${app}-server" --template="${app}-server.service"
+ynh_add_systemd_config --service="${app}-worker" --template="${app}-worker.service"
+ynh_add_systemd_config --service="${app}-beat"   --template="${app}-beat.service"
 
 #=================================================
 # GENERIC FINALIZATION
@@ -163,14 +170,18 @@ ynh_add_systemd_config
 #=================================================
 ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
 
-yunohost service add $app --description="BookWyrm service" --log="/var/log/$app/$app.log"
+yunohost service add "${app}-beat"
+yunohost service add "${app}-server"
+yunohost service add "${app}-worker"
 
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
 ynh_script_progression --message="Starting a systemd service..." --weight=1
 
-ynh_systemd_action --service_name=$app --action="start" --log_path="/var/log/$app/$app.log"
+ynh_systemd_action --service_name="${app}-beat" --action="start" --log_path="systemd" --line_match="Started"
+ynh_systemd_action --service_name="${app}-server" --action="start" --log_path="systemd" --line_match="Booting worker with pid"
+ynh_systemd_action --service_name="${app}-worker" --action="start" --log_path="systemd" --line_match="ready"
 
 
 #=================================================
