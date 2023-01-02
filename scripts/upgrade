@@ -22,7 +22,11 @@ language=$(ynh_app_setting_get --app=$app --key=language)
 admin=$(ynh_app_setting_get --app=$app --key=admin)
 final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 db_name=$(ynh_app_setting_get --app=$app --key=db_name)
+db_user=$(ynh_app_setting_get --app=$app --key=db_user)
+db_pwd=$(ynh_app_setting_get --app=$app --key=psqlpwd)
 port=$(ynh_app_setting_get --app=$app --key=port)
+
+admin_mail=$(ynh_user_get_info --username=$admin --key=username)
 
 #=================================================
 # CHECK VERSION
@@ -133,6 +137,23 @@ fi
 chmod 750 "$final_path"
 chmod -R o-rwx "$final_path"
 chown -R $app:www-data "$final_path"
+
+#=================================================
+# CONFIGURE THEN INSTALL SCRIPT AND DEPENDENCIES
+#=================================================
+ynh_script_progression --message="Installing service script..." --weight=1
+
+ynh_add_config --template="../conf/.env.production" --destination="$final_path/.env"
+chmod 600 $final_path/.env
+chown $app:www-data "$final_path/.env"
+
+set -a; source "$final_path/.env"; set +a
+
+
+ynh_secure_remove --file="$final_path/venv"
+mkdir "$final_path/venv"
+python3 -m venv "$final_path/venv"
+$final_path/venv/bin/pip3 install -r "$final_path/requirements.txt"
 
 #=================================================
 # NGINX CONFIGURATION
