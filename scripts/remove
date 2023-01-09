@@ -95,7 +95,6 @@ ynh_script_progression --message="Removing NGINX web server configuration..."  -
 # Remove the dedicated NGINX config
 ynh_remove_nginx_config
 
-
 #=================================================
 # REMOVE DEPENDENCIES
 #=================================================
@@ -103,33 +102,6 @@ ynh_script_progression --message="Removing dependencies..." --weight=1
 
 # Remove metapackage and its dependencies
 ynh_remove_app_dependencies
-
-#=================================================
-# CLOSE A PORT
-#=================================================
-
-if yunohost firewall list | grep -q "\- $port$"
-then
-	ynh_script_progression --message="Closing port $port..." --weight=1
-	ynh_exec_warn_less yunohost firewall disallow TCP $port
-fi
-
-
-#=================================================
-# SPECIFIC REMOVE
-#=================================================
-# REMOVE VARIOUS FILES
-#=================================================
-ynh_script_progression --message="Removing various files..." --weight=1
-
-# Remove a cron file
-ynh_secure_remove --file="/etc/cron.d/$app"
-
-# Remove a directory securely
-ynh_secure_remove --file="/etc/$app"
-
-# Remove the log files
-ynh_secure_remove --file="/var/log/$app"
 
 #=================================================
 # GENERIC FINALIZATION

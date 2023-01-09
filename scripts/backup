@@ -39,11 +39,6 @@ datadir=$(ynh_app_setting_get --app=$app --key=datadir)
 #=================================================
 ynh_print_info --message="Declaring files to be backed up..."
 
-### N.B. : the following 'ynh_backup' calls are only a *declaration* of what needs
-### to be backuped and not an actual copy of any file. The actual backup that
-### creates and fill the archive with the files happens in the core after this
-### script is called. Hence ynh_backups calls takes basically 0 seconds to run.
-
 #=================================================
 # BACKUP THE APP MAIN DIR
 #=================================================
@@ -62,12 +57,6 @@ ynh_backup --src_path="$datadir" --is_big
 
 ynh_backup --src_path="/etc/nginx/conf.d/$domain.d/$app.conf"
 
-
-#=================================================
-# SPECIFIC BACKUP
-#=================================================
-
-
 #=================================================
 # BACKUP SYSTEMD
 #=================================================
@@ -76,7 +65,6 @@ ynh_backup --src_path="/etc/systemd/system/${app}-beat.service"
 ynh_backup --src_path="/etc/systemd/system/${app}-server.service"
 ynh_backup --src_path="/etc/systemd/system/${app}-worker.service"
 ynh_backup --src_path="/etc/systemd/system/$app.target"
-
 
 #=================================================
 # BACKUP THE POSTGRESQL DATABASE
