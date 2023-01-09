@@ -30,7 +30,6 @@ BookWyrm est un réseau social pour garder la trace de vos lectures, parler de l
 
 Ce projet est encore jeune et n'est pas, pour le moment, très stable, faites preuve de prudence lors de son utilisation en production.
 
-
 ## Documentations et ressources
 
 * Site officiel de l'app : <https://joinbookwyrm.com/fr/>
