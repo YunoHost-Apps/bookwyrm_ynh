@@ -63,7 +63,6 @@ ynh_app_setting_set --app=$app --key=admin --value=$admin
 #=================================================
 ynh_script_progression --message="Finding an available port..." --weight=1
 
-
 port=$(ynh_find_port --port=8000)
 ynh_app_setting_set --app=$app --key=port --value=$port
 
@@ -72,7 +71,7 @@ ynh_app_setting_set --app=$app --key=port --value=$port
 #=================================================
 ynh_script_progression --message="Installing dependencies..." --weight=1
 
-ynh_install_app_dependencies $pkg_dependencies
+ynh_exec_warn_less ynh_install_app_dependencies $pkg_dependencies
 
 #=================================================
 # CREATE DEDICATED USER
@@ -87,14 +86,11 @@ ynh_system_user_create --username=$app --home_dir="$final_path"
 #=================================================
 ynh_script_progression --message="Creating a PostgreSQL database..." --weight=1
 
-db_name=$(ynh_sanitize_dbid --db_name="${app}")
-db_user=$(ynh_sanitize_dbid --db_name=$app)
+db_name=$(ynh_sanitize_dbid --db_name=$app)
+db_user=$db_name
 ynh_app_setting_set --app=$app --key=db_name --value=$db_name
-ynh_app_setting_set --app=$app --key=db_user --value=$db_user
 ynh_psql_test_if_first_run
 ynh_psql_setup_db --db_user=$db_user --db_name=$db_name
-ynh_psql_execute_as_root --sql="ALTER USER $db_user CREATEDB;"
-db_pwd=$(ynh_app_setting_get --app=$app --key=psqlpwd)
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -146,12 +142,10 @@ ynh_add_nginx_config
 #=================================================
 ynh_script_progression --message="Creating a data directory..." --weight=1
 
-
 datadir=/home/yunohost.app/$app
 ynh_app_setting_set --app=$app --key=datadir --value=$datadir
 
 mkdir -p $datadir
-
 
 chmod 750 "$datadir"
 chmod -R o-rwx "$datadir"
@@ -169,11 +163,8 @@ ynh_add_systemd_config --service="${app}-server" --template="${app}-server.servi
 ynh_add_systemd_config --service="${app}-worker" --template="${app}-worker.service"
 ynh_add_systemd_config --service="${app}-beat"   --template="${app}-beat.service"
 
-
 #=================================================
 # GENERIC FINALIZATION
-#=================================================
-
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
 #=================================================
@@ -192,7 +183,6 @@ ynh_script_progression --message="Starting a systemd service..." --weight=1
 ynh_systemd_action --service_name="${app}-beat" --action="start" --log_path="systemd" --line_match="Started"
 ynh_systemd_action --service_name="${app}-server" --action="start" --log_path="systemd" --line_match="Booting worker with pid"
 ynh_systemd_action --service_name="${app}-worker" --action="start" --log_path="systemd" --line_match="ready"
-
 
 #=================================================
 # SETUP SSOWAT

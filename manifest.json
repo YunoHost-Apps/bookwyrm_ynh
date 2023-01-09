@@ -3,8 +3,8 @@
     "id": "bookwyrm",
     "packaging_format": 1,
     "description": {
-        "en": "$app is a platform for social reading.",
-        "fr": "$app est une plateforme de lecture sociale."
+        "en": "Platform for social reading",
+        "fr": "Plateforme de lecture sociale"
     },
     "version": "0.5.3~ynh1",
     "url": "https://github.com/bookwyrm-social/bookwyrm",
@@ -20,7 +20,7 @@
         "name": "oufmilo"
     },
     "requirements": {
-        "yunohost": ">= 4.3.0"
+        "yunohost": ">= 11.0.9"
     },
        "services": [
         "nginx",
