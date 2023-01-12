@@ -105,7 +105,10 @@ chown -R $app:www-data "$datadir"
 ynh_script_progression --message="Reinstalling dependencies..." --weight=1
 
 # Define and install dependencies
-ynh_exec_warn_less ynh_install_app_dependencies $pkg_dependencies
+
+ynh_exec_warn_less 
+ynh_install_app_dependencies 
+$pkg_dependencies
 
 #=================================================
 # RESTORE THE POSTGRESQL DATABASE
