@@ -46,8 +46,8 @@
                     "en": "Choose the application language",
                     "fr": "Choisissez la langue de l'application"
                 },
-                "choices": ["fr", "en"],
-                "default": "fr"
+                "choices": ["fr-fr", "en-us", "it-it", "pt-pt"],
+                "default": "fr-fr"
             },
             {
                 "name": "admin",
