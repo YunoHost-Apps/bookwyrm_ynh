@@ -5,15 +5,15 @@ It shall NOT be edited by hand.
 
 # BookWyrm pour YunoHost
 
-[![Niveau d'intégration](https://dash.yunohost.org/integration/bookwyrm.svg)](https://dash.yunohost.org/appci/app/bookwyrm) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/bookwyrm.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/bookwyrm.maintain.svg)  
+[![Niveau d’intégration](https://dash.yunohost.org/integration/bookwyrm.svg)](https://dash.yunohost.org/appci/app/bookwyrm) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/bookwyrm.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/bookwyrm.maintain.svg)  
 [![Installer BookWyrm avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=bookwyrm)
 
 *[Read this readme in english.](./README.md)*
 
-> *Ce package vous permet d'installer BookWyrm rapidement et simplement sur un serveur YunoHost.
-Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l'installer et en profiter.*
+> *Ce package vous permet d’installer BookWyrm rapidement et simplement sur un serveur YunoHost.
+Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour savoir comment l’installer et en profiter.*
 
-## Vue d'ensemble
+## Vue d’ensemble
 
 BookWyrm est un réseau social pour garder la trace de vos lectures, parler de livres, écrire des critiques et découvrir quoi lire ensuite.
 
@@ -22,19 +22,19 @@ BookWyrm est un réseau social pour garder la trace de vos lectures, parler de l
 
 **Démo :** https://joinbookwyrm.com/fr/
 
-## Captures d'écran
+## Captures d’écran
 
-![Capture d'écran de BookWyrm](./doc/screenshots/screenshot-bookwyrm.jpg)
+![Capture d’écran de BookWyrm](./doc/screenshots/screenshot-bookwyrm.jpg)
 
 ## Avertissements / informations importantes
 
-
+Ce projet est encore jeune et n'est pas, pour le moment, très stable, faites preuve de prudence lors de son utilisation en production.
 
 ## Documentations et ressources
 
-* Site officiel de l'app : <https://joinbookwyrm.com/fr/>
-* Documentation officielle de l'admin : <https://docs.joinbookwyrm.com/>
-* Dépôt de code officiel de l'app : <https://github.com/bookwyrm-social/bookwyrm>
+* Site officiel de l’app : <https://joinbookwyrm.com/fr/>
+* Documentation officielle de l’admin : <https://docs.joinbookwyrm.com/>
+* Dépôt de code officiel de l’app : <https://github.com/bookwyrm-social/bookwyrm>
 * Documentation YunoHost pour cette app : <https://yunohost.org/app_bookwyrm>
 * Signaler un bug : <https://github.com/YunoHost-Apps/bookwyrm_ynh/issues>
 
@@ -50,4 +50,4 @@ ou
 sudo yunohost app upgrade bookwyrm -u https://github.com/YunoHost-Apps/bookwyrm_ynh/tree/testing --debug
 ```
 
-**Plus d'infos sur le packaging d'applications :** <https://yunohost.org/packaging_apps>
+**Plus d’infos sur le packaging d’applications :** <https://yunohost.org/packaging_apps>

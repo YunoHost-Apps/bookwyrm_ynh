@@ -2,7 +2,7 @@
 	; Manifest
 		domain="domain.tld"
 		is_public=1
-		language="fr"
+		language="fr-fr"
 		admin="john"
 	; Checks
 		pkg_linter=1

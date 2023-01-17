@@ -28,7 +28,7 @@ BookWyrm is a social network for tracking your reading, talking about books, wri
 
 ## Disclaimers / important information
 
-
+This project is still young and isn't, at the moment, very stable, so please proceed with caution when running in production.
 
 ## Documentation and resources
 
