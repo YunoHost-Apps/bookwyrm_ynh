@@ -137,14 +137,6 @@ $final_path/venv/bin/python3 "$final_path/manage.py" collectstatic --no-input
 chown -R $app:www-data $final_path
 
 #=================================================
-# NGINX CONFIGURATION
-#=================================================
-ynh_script_progression --message="Configuring NGINX web server..." --weight=1
-
-# Create a dedicated NGINX config
-ynh_add_nginx_config
-
-#=================================================
 # CREATE DATA DIRECTORY
 #=================================================
 ynh_script_progression --message="Creating a data directory..." --weight=1
@@ -158,6 +150,14 @@ mkdir -p $datadir/images
 chmod 750 "$datadir"
 chmod -R o-rwx "$datadir"
 chown -R $app:www-data "$datadir"
+
+#=================================================
+# NGINX CONFIGURATION
+#=================================================
+ynh_script_progression --message="Configuring NGINX web server..." --weight=1
+
+# Create a dedicated NGINX config
+ynh_add_nginx_config
 
 #=================================================
 # SETUP SYSTEMD
