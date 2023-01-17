@@ -130,6 +130,12 @@ $final_path/venv/bin/python3 "$final_path/manage.py" initdb
 $final_path/venv/bin/python3 "$final_path/manage.py" collectstatic --no-input
 
 #=================================================
+# SET PERMISSIONS ON BOOKWYRM DIRECTORY
+#=================================================
+
+chown -R $app:www-data $final_path
+
+#=================================================
 # NGINX CONFIGURATION
 #=================================================
 ynh_script_progression --message="Configuring NGINX web server..." --weight=1
