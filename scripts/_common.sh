@@ -5,7 +5,7 @@
 #=================================================
 
 # dependencies used by the app
-pkg_dependencies="postgresql postgresql-contrib nginx python3-venv libpq-dev"
+pkg_dependencies="postgresql postgresql-contrib python3-venv libpq-dev"
 
 #=================================================
 # PERSONAL HELPERS
