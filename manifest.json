@@ -46,7 +46,7 @@
                     "en": "Choose the application language",
                     "fr": "Choisissez la langue de l'application"
                 },
-                "choices": ["fr-fr", "en-us", "it-it", "pt-pt"],
+                "choices": ["de-de", "en-us", "es-es", "fr-fr", "it-it", "pt-pt", "zh-hans"],
                 "default": "fr-fr"
             },
             {
