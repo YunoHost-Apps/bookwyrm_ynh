@@ -77,6 +77,9 @@ then
 
 	# Download, check integrity, uncompress and patch the source from app.src
 	ynh_setup_source --dest_dir="$final_path" --keep=".env"
+	ynh_exec_warn_less ynh_exec_as $app ./bw-dev update
+	ynh_exec_warn_less ynh_exec_as $app ./bw-dev populate_streams
+
 fi
 
 chmod 750 "$final_path"
@@ -98,6 +101,7 @@ ynh_secure_remove --file="$final_path/venv"
 mkdir "$final_path/venv"
 python3 -m venv "$final_path/venv"
 $final_path/venv/bin/pip3 install -r "$final_path/requirements.txt"
+
 
 #=================================================
 # SET PERMISSIONS ON BOOKWYRM DIRECTORY
