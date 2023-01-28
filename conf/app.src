@@ -1,5 +1,5 @@
-SOURCE_URL=https://github.com/bookwyrm-social/bookwyrm/archive/refs/tags/v0.5.3.tar.gz
-SOURCE_SUM=41E263369BB3E0ED23AF6D6E112BD35EDE082BD5BECFE1BE9BBA152E47EE4E86
+SOURCE_URL=https://github.com/bookwyrm-social/bookwyrm/archive/refs/tags/v0.5.4.tar.gz
+SOURCE_SUM=2dafdcf26de6c041611d16ed48b751cf8d4dfbee1f5cf4aa5975592bc080261d
 SOURCE_SUM_PRG=sha256sum
 SOURCE_FORMAT=tar.gz
 SOURCE_IN_SUBDIR=true
