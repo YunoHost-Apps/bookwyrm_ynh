@@ -98,12 +98,8 @@ ynh_psql_setup_db --db_user=$db_user --db_name=$db_name
 ynh_script_progression --message="Setting up source files..." --weight=1
 
 ynh_app_setting_set --app=$app --key=final_path --value=$final_path
-# Note: We use git instead of ynh_setup_source, cause this repo use submodules
-git clone https://github.com/bookwyrm-social/bookwyrm.git "$final_path" --quiet
 
-pushd "$final_path"
-    git checkout $COMMIT
-popd
+ynh_setup_source --dest_dir="$final_path"
 
 chmod 750 "$final_path"
 chmod -R o-rwx "$final_path"
