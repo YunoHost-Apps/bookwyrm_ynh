@@ -13,7 +13,7 @@
 		setup_public=1
 		upgrade=1
 		# 0.5.4ynh1
-		upgrade=1	from_commit=2292d0d68f5ba9e48f4cbb6105db64b4da4eba74
+		# upgrade=1	from_commit=2292d0d68f5ba9e48f4cbb6105db64b4da4eba74
 		backup_restore=1
 		multi_instance=0
 		change_url=0
