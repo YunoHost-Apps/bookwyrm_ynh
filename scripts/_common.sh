@@ -4,6 +4,8 @@
 # COMMON VARIABLES
 #=================================================
 
+COMMIT="cad83a339ea53cd50aed9aa45a85e9f5b6443b64"
+
 # dependencies used by the app
 pkg_dependencies="postgresql postgresql-contrib python3-venv libpq-dev"
 

@@ -77,8 +77,9 @@ then
 
 	# Download, check integrity, uncompress and patch the source from app.src
 	ynh_setup_source --dest_dir="$final_path" --keep=".env"
-	ynh_exec_warn_less ynh_exec_as $app ./bw-dev update
-	ynh_exec_warn_less ynh_exec_as $app ./bw-dev populate_streams
+	pushd "$final_path"
+		./bw-dev update
+	popd
 
 fi
 
