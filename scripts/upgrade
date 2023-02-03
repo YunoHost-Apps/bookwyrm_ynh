@@ -25,6 +25,7 @@ final_path=$(ynh_app_setting_get --app=$app --key=final_path)
 #db_user=$(ynh_app_setting_get --app=$app --key=db_user)
 #db_pwd=$(ynh_app_setting_get --app=$app --key=psqlpwd)
 port=$(ynh_app_setting_get --app=$app --key=port)
+datadir=$(ynh_app_setting_get --app=$app --key=datadir)
 
 admin_mail=$(ynh_user_get_info --username=$admin --key=username)
 
