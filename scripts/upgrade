@@ -100,6 +100,7 @@ mkdir "$final_path/venv"
 python3 -m venv "$final_path/venv"
 $final_path/venv/bin/pip3 install -r "$final_path/requirements.txt"
 
+
 #=================================================
 # SET PERMISSIONS ON BOOKWYRM DIRECTORY
 #=================================================
