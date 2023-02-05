@@ -28,7 +28,7 @@ port=$(ynh_app_setting_get --app=$app --key=port)
 datadir=$(ynh_app_setting_get --app=$app --key=datadir)
 
 admin_mail=$(ynh_user_get_info --username=$admin --key=username)
-key=$(ynh_string_random --length=32)
+#key=$(ynh_string_random --length=32)
 
 #=================================================
 # CHECK VERSION
