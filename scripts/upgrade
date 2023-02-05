@@ -89,9 +89,9 @@ chown -R $app:www-data "$final_path"
 #=================================================
 ynh_script_progression --message="Installing service script..." --weight=1
 
-#ynh_add_config --template="../conf/.env.production" --destination="$final_path/.env"
-#chmod 600 $final_path/.env
-#chown $app:www-data "$final_path/.env"
+ynh_add_config --template="../conf/.env.production" --destination="$final_path/.env"
+chmod 600 $final_path/.env
+chown $app:www-data "$final_path/.env"
 
 set -a; source "$final_path/.env"; set +a
 
