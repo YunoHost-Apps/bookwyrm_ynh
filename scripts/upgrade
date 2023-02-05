@@ -21,14 +21,14 @@ path_url=$(ynh_app_setting_get --app=$app --key=path)
 language=$(ynh_app_setting_get --app=$app --key=language)
 admin=$(ynh_app_setting_get --app=$app --key=admin)
 final_path=$(ynh_app_setting_get --app=$app --key=final_path)
-db_name=$(ynh_app_setting_get --app=$app --key=db_name)
-db_user=$(ynh_app_setting_get --app=$app --key=db_user)
-db_pwd=$(ynh_app_setting_get --app=$app --key=psqlpwd)
+#db_name=$(ynh_app_setting_get --app=$app --key=db_name)
+#db_user=$(ynh_app_setting_get --app=$app --key=db_user)
+#db_pwd=$(ynh_app_setting_get --app=$app --key=psqlpwd)
 port=$(ynh_app_setting_get --app=$app --key=port)
 datadir=$(ynh_app_setting_get --app=$app --key=datadir)
 
 admin_mail=$(ynh_user_get_info --username=$admin --key=username)
-key=$(ynh_string_random --length=32)
+#key=$(ynh_string_random --length=32)
 
 #=================================================
 # CHECK VERSION
@@ -90,9 +90,9 @@ chown -R $app:www-data "$final_path"
 #=================================================
 ynh_script_progression --message="Installing service script..." --weight=1
 
-ynh_add_config --template="../conf/.env.production" --destination="$final_path/.env"
-chmod 600 $final_path/.env
-chown $app:www-data "$final_path/.env"
+#ynh_add_config --template="../conf/.env.production" --destination="$final_path/.env"
+#chmod 600 $final_path/.env
+#chown $app:www-data "$final_path/.env"
 
 set -a; source "$final_path/.env"; set +a
 
@@ -109,7 +109,6 @@ ynh_script_progression --message="Initializing database..." --weight=1
 $final_path/venv/bin/python3 "$final_path/manage.py" migrate
 $final_path/venv/bin/python3 "$final_path/manage.py" compile_themes
 $final_path/venv/bin/python3 "$final_path/manage.py" collectstatic --no-input
-$final_path/venv/bin/python3 "$final_path/manage.py" populate_streams
 
 #=================================================
 # SET PERMISSIONS ON BOOKWYRM DIRECTORY
