@@ -107,8 +107,8 @@ $final_path/venv/bin/pip3 install -r "$final_path/requirements.txt"
 ynh_script_progression --message="Initializing database..." --weight=1
 
 $final_path/venv/bin/python3 "$final_path/manage.py" migrate
-$final_path/venv/bin/python3 "$final_path/manage.py" compile_themes
 $final_path/venv/bin/python3 "$final_path/manage.py" collectstatic --no-input
+$final_path/venv/bin/python3 "$final_path/manage.py" populate_streams
 
 #=================================================
 # SET PERMISSIONS ON BOOKWYRM DIRECTORY
