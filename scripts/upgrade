@@ -107,9 +107,12 @@ $final_path/venv/bin/pip3 install -r "$final_path/requirements.txt"
 #=================================================
 ynh_script_progression --message="Upgrading database..." --weight=1
 
-$final_path/venv/bin/python3 "$final_path/manage.py" migrate
-$final_path/venv/bin/python3 "$final_path/manage.py" collectstatic --no-input
-$final_path/venv/bin/python3 "$final_path/manage.py" populate_streams
+pushd "$final_path"
+	docker-compose build
+	$final_path/venv/bin/python3 "$final_path/manage.py" migrate
+	$final_path/venv/bin/python3 "$final_path/manage.py" collectstatic --no-input
+	$final_path/venv/bin/python3 "$final_path/manage.py" populate_streams
+popd
 
 #=================================================
 # SET PERMISSIONS ON BOOKWYRM DIRECTORY
