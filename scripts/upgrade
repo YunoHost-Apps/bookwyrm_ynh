@@ -112,6 +112,8 @@ pushd "$final_path"
 	$final_path/venv/bin/python3 "$final_path/manage.py" migrate
 	$final_path/venv/bin/python3 "$final_path/manage.py" collectstatic --no-input
 	$final_path/venv/bin/python3 "$final_path/manage.py" populate_streams
+	docker-compose down
+	docker-compose up -d
 popd
 
 #=================================================
