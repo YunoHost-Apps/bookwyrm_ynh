@@ -5,7 +5,7 @@ It shall NOT be edited by hand.
 
 # BookWyrm pour YunoHost
 
-[![Niveau d’intégration](https://dash.yunohost.org/integration/bookwyrm.svg)](https://dash.yunohost.org/appci/app/bookwyrm) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/bookwyrm.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/bookwyrm.maintain.svg)  
+[![Niveau d’intégration](https://dash.yunohost.org/integration/bookwyrm.svg)](https://dash.yunohost.org/appci/app/bookwyrm) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/bookwyrm.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/bookwyrm.maintain.svg)
 [![Installer BookWyrm avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=bookwyrm)
 
 *[Read this readme in english.](./README.md)*
@@ -18,7 +18,7 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 BookWyrm est un réseau social pour garder la trace de vos lectures, parler de livres, écrire des critiques et découvrir quoi lire ensuite.
 
 
-**Version incluse :** 0.5.3~ynh1
+**Version incluse :** 0.5.4~ynh1
 
 **Démo :** https://joinbookwyrm.com/fr/
 
@@ -30,7 +30,7 @@ BookWyrm est un réseau social pour garder la trace de vos lectures, parler de l
 
 Ce projet est encore jeune et n'est pas, pour le moment, très stable, faites preuve de prudence lors de son utilisation en production.
 
-Générez le code administrateur avec 'sudo -u bookwyrm /var/www/bookwyrm/venv/bin/python3 /var/www/bookwyrm/manage.py admin_code',
+Générez le code administrateur avec `sudo -u bookwyrm /var/www/bookwyrm/venv/bin/python3 /var/www/bookwyrm/manage.py admin_code`,
 et copiez le code administrateur à utiliser lors de la création de votre compte administrateur. Vous pouvez obtenir votre code
 à tout moment en réexécutant cette commande. Voici un exemple de sortie :
 ```
