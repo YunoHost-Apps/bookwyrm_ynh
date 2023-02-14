@@ -6,6 +6,7 @@ It shall NOT be edited by hand.
 # BookWyrm for YunoHost
 
 [![Integration level](https://dash.yunohost.org/integration/bookwyrm.svg)](https://dash.yunohost.org/appci/app/bookwyrm) ![Working status](https://ci-apps.yunohost.org/ci/badges/bookwyrm.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/bookwyrm.maintain.svg)
+
 [![Install BookWyrm with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=bookwyrm)
 
 *[Lire ce readme en français.](./README_fr.md)*
@@ -44,6 +45,7 @@ c6c35779-af3a-4091-b330-c026610920d6
 * Official app website: <https://joinbookwyrm.com/fr/>
 * Official admin documentation: <https://docs.joinbookwyrm.com/>
 * Upstream app code repository: <https://github.com/bookwyrm-social/bookwyrm>
+* YunoHost documentation for this app: <https://yunohost.org/app_bookwyrm>
 * Report a bug: <https://github.com/YunoHost-Apps/bookwyrm_ynh/issues>
 
 ## Developer info
