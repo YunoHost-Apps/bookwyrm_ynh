@@ -44,7 +44,6 @@ c6c35779-af3a-4091-b330-c026610920d6
 * Official app website: <https://joinbookwyrm.com/fr/>
 * Official admin documentation: <https://docs.joinbookwyrm.com/>
 * Upstream app code repository: <https://github.com/bookwyrm-social/bookwyrm>
-* YunoHost documentation for this app: <https://yunohost.org/app_bookwyrm>
 * Report a bug: <https://github.com/YunoHost-Apps/bookwyrm_ynh/issues>
 
 ## Developer info
