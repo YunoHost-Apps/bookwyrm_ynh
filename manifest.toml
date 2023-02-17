@@ -1,0 +1,67 @@
+packaging_format = 2
+
+id = "bookwyrm"
+name = "BookWyrm"
+description.en = "Platform for social reading"
+description.fr = "Plateforme de lecture sociale"
+
+version = "0.5.4~ynh1"
+
+maintainers = ["oufmilo"]
+
+[upstream]
+license = "AGPL-3.0-or-later"
+website = "https://joinbookwyrm.com/fr/"
+demo = "https://joinbookwyrm.com/fr/"
+admindoc = "https://docs.joinbookwyrm.com/"
+code = "https://github.com/bookwyrm-social/bookwyrm" 
+
+[integration]
+yunohost = ">= 11.0.9"
+architectures = "all" 
+multi_instance = true
+ldap = "not_relevant" 
+sso = "not_relevant" 
+disk = "50M" 
+ram.build = "50M" 
+ram.runtime = "50M" 
+
+[install]
+    [install.domain]
+    # this is a generic question - ask strings are automatically handled by Yunohost's core
+    type = "domain"
+    full_domain = true
+
+    [install.init_main_permission]
+    type = "group"
+    default = "visitors"
+
+    [install.language]
+    ask.en = "Choose the application language"
+    ask.fr = "Choisissez la langue de l'application"
+    type = "string"
+    choices = ["de-de", "en-us", "es-es", "fr-fr", "it-it", "pt-pt", "zh-hans"]
+    default = "fr-fr"
+
+    [install.admin]
+    # this is a generic question - ask strings are automatically handled by Yunohost's core
+    type = "user"
+
+[resources]
+    [resources.system_user]
+
+    [resources.install_dir]
+
+    [resources.data_dir]
+
+    [resources.permissions]
+    main.url = "/"
+
+    [resources.ports]
+    main.default = 8000
+
+    [resources.apt]
+    packages = "postgresql, postgresql-contrib, python3-venv, libpq-dev"
+
+    [resources.database]
+    type = "postgresql"
