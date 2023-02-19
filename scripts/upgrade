@@ -109,13 +109,6 @@ ynh_systemd_action --service_name="${app}-server" --action="start" --log_path="s
 ynh_systemd_action --service_name="${app}-worker" --action="start" --log_path="systemd" --line_match="ready"
 
 #=================================================
-# RELOAD NGINX
-#=================================================
-ynh_script_progression --message="Reloading NGINX web server..." --weight=1
-
-ynh_systemd_action --service_name=nginx --action=reload
-
-#=================================================
 # END OF SCRIPT
 #=================================================
 
