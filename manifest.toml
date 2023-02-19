@@ -19,7 +19,7 @@ code = "https://github.com/bookwyrm-social/bookwyrm"
 [integration]
 yunohost = ">= 11.0.9"
 architectures = "all" 
-multi_instance = true
+multi_instance = false
 ldap = "not_relevant" 
 sso = "not_relevant" 
 disk = "50M" 
