@@ -7,9 +7,9 @@ PartOf=__APP__.target
 [Service]
 User=__APP__
 Group=__APP__
-WorkingDirectory=__FINALPATH__/
-EnvironmentFile=__FINALPATH__/.env
-ExecStart=__FINALPATH__/venv/bin/gunicorn bookwyrm.wsgi:application --bind 127.0.0.1:__PORT__
+WorkingDirectory=__INSTALL_DIR__/
+EnvironmentFile=__INSTALL_DIR__/.env
+ExecStart=__INSTALL_DIR__/venv/bin/gunicorn bookwyrm.wsgi:application --bind 127.0.0.1:__PORT__
 
 [Install]
 WantedBy=multi-user.target
