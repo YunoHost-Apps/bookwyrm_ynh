@@ -50,7 +50,6 @@ $install_dir/venv/bin/python3 "$install_dir/manage.py" initdb
 $install_dir/venv/bin/python3 "$install_dir/manage.py" compile_themes
 $install_dir/venv/bin/python3 "$install_dir/manage.py" collectstatic --no-input
 
-
 #=================================================
 # NGINX CONFIGURATION
 #=================================================
