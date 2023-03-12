@@ -9,7 +9,7 @@ User=__APP__
 Group=__APP__
 WorkingDirectory=__INSTALL_DIR__/
 EnvironmentFile=__INSTALL_DIR__/.env
-ExecStart=__INSTALL_DIR__/venv/bin/celery -A celerywyrm worker -l info -Q high_priority,medium_priority,low_priority
+ExecStart=__INSTALL_DIR__/venv/bin/celery -A celerywyrm worker -l info -Q high_priority,medium_priority,low_priority,imports
 
 NoNewPrivileges=yes
 PrivateTmp=yes
