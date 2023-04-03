@@ -5,7 +5,7 @@ name = "BookWyrm"
 description.en = "Platform for social reading"
 description.fr = "Plateforme de lecture sociale"
 
-version = "0.5.4~ynh1"
+version = "0.5.5~ynh1"
 
 maintainers = ["oufmilo"]
 
@@ -20,8 +20,8 @@ code = "https://github.com/bookwyrm-social/bookwyrm"
 yunohost = ">= 11.1.14"
 architectures = "all"
 multi_instance = false
-ldap = "not_relevant"
-sso = "not_relevant"
+ldap = false
+sso = false
 disk = "50M"
 ram.build = "50M"
 ram.runtime = "50M"
