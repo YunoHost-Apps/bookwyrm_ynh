@@ -17,7 +17,7 @@ admindoc = "https://docs.joinbookwyrm.com/"
 code = "https://github.com/bookwyrm-social/bookwyrm"
 
 [integration]
-yunohost = ">= 11.1.14"
+yunohost = ">= 11.1.16"
 architectures = "all"
 multi_instance = false
 ldap = false
@@ -51,6 +51,8 @@ ram.runtime = "50M"
         [resources.sources.main]
         url = "https://github.com/bookwyrm-social/bookwyrm/archive/refs/tags/v0.5.5.tar.gz"
         sha256 = "e09e7dff22e1d5aadb44c52d217fa53d3eaf2fece9aa9856a147987f0bbba14f"
+
+        autoupdate.strategy = "latest_github_tag"
 
     [resources.system_user]
 
