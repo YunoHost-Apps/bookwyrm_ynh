@@ -5,7 +5,7 @@ name = "BookWyrm"
 description.en = "Platform for social reading"
 description.fr = "Plateforme de lecture sociale"
 
-version = "0.5.5~ynh1"
+version = "0.6.0~ynh1"
 
 maintainers = ["oufmilo"]
 
@@ -51,10 +51,11 @@ ram.runtime = "50M"
     [resources.sources]
 
         [resources.sources.main]
-        url = "https://github.com/bookwyrm-social/bookwyrm/archive/refs/tags/v0.5.5.tar.gz"
-        sha256 = "e09e7dff22e1d5aadb44c52d217fa53d3eaf2fece9aa9856a147987f0bbba14f"
+        url = "https://github.com/bookwyrm-social/bookwyrm/archive/refs/tags/v0.6.0.tar.gz"
+        sha256 = "65d43f051ed5d6c31432511bbd98b8160c0e2e13f2dafd940ece7e71d24b9a32"
 
         autoupdate.strategy = "latest_github_tag"
+
 
     [resources.system_user]
 
