@@ -19,7 +19,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 BookWyrm is a social network for tracking your reading, talking about books, writing reviews, and discovering what to read next.
 
 
-**Shipped version:** 0.5.4~ynh1
+**Shipped version:** 0.6.0~ynh1
 
 **Demo:** https://joinbookwyrm.com/fr/
 
@@ -27,18 +27,6 @@ BookWyrm is a social network for tracking your reading, talking about books, wri
 
 ![Screenshot of BookWyrm](./doc/screenshots/screenshot-bookwyrm.jpg)
 
-## Disclaimers / important information
-
-This project is still young and isn't, at the moment, very stable, so please proceed with caution when running in production.
-
-Generate the admin code with ``` sudo -u bookwyrm /var/www/bookwyrm/venv/bin/python3 /var/www/bookwyrm/manage.py admin_code```, and copy the admin code to use when you create your admin account. You can get your code at any time by re-running that command. Here's an example output:
-
-``` bash
-*******************************************
-Use this code to create your admin account:
-c6c35779-af3a-4091-b330-c026610920d6
-*******************************************
-```
 ## Documentation and resources
 
 * Official app website: <https://joinbookwyrm.com/fr/>
