@@ -18,3 +18,4 @@ test_format = 1.0
     # -------------------------------
 
     test_upgrade_from.2292d0d.name = "Upgrade from 0.5.3"
+    test_upgrade_from.7600f04.name = "Upgrade from 0.5.4"

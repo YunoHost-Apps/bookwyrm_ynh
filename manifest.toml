@@ -15,13 +15,15 @@ website = "https://joinbookwyrm.com/fr/"
 demo = "https://joinbookwyrm.com/fr/"
 admindoc = "https://docs.joinbookwyrm.com/"
 code = "https://github.com/bookwyrm-social/bookwyrm"
+cpe = "cpe:2.3:a:joinbookwyrm:bookwyrm"
+fund = ["https://patreon.com/bookwyrm", "https://opencollective.com/bookwyrm"]
 
 [integration]
-yunohost = ">= 11.1.14"
+yunohost = ">= 11.1.16"
 architectures = "all"
 multi_instance = false
-ldap = "not_relevant"
-sso = "not_relevant"
+ldap = false
+sso = false
 disk = "50M"
 ram.build = "50M"
 ram.runtime = "50M"
@@ -51,6 +53,9 @@ ram.runtime = "50M"
         [resources.sources.main]
         url = "https://github.com/bookwyrm-social/bookwyrm/archive/refs/tags/v0.6.0.tar.gz"
         sha256 = "65d43f051ed5d6c31432511bbd98b8160c0e2e13f2dafd940ece7e71d24b9a32"
+
+        autoupdate.strategy = "latest_github_tag"
+
 
     [resources.system_user]
 
