@@ -5,7 +5,7 @@ name = "BookWyrm"
 description.en = "Platform for social reading"
 description.fr = "Plateforme de lecture sociale"
 
-version = "0.6.2~ynh1"
+version = "0.6.3~ynh1"
 
 maintainers = ["oufmilo"]
 
@@ -19,7 +19,7 @@ cpe = "cpe:2.3:a:joinbookwyrm:bookwyrm"
 fund = ["https://patreon.com/bookwyrm", "https://opencollective.com/bookwyrm"]
 
 [integration]
-yunohost = ">= 11.1.16"
+yunohost = ">= 11.1.19"
 architectures = "all"
 multi_instance = false
 ldap = false
@@ -51,8 +51,8 @@ ram.runtime = "50M"
     [resources.sources]
 
         [resources.sources.main]
-        url = "https://github.com/bookwyrm-social/bookwyrm/archive/refs/tags/v0.6.2.tar.gz"
-        sha256 = "0230c7ab7f1b1079f21180849507f252567e4d8b4d0d8de38c89de8ebab4a9f3"
+        url = "https://github.com/bookwyrm-social/bookwyrm/archive/refs/tags/v0.6.3.tar.gz"
+        sha256 = "7d100630d00bd4a11f16cda0603859ab190aee2efafeabedd1d82469cb571e78"
 
         autoupdate.strategy = "latest_github_tag"
 
