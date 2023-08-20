@@ -19,7 +19,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 BookWyrm is a social network for tracking your reading, talking about books, writing reviews, and discovering what to read next.
 
 
-**Shipped version:** 0.6.4~ynh1
+**Shipped version:** 0.6.5~ynh1
 
 **Demo:** https://joinbookwyrm.com/fr/
 
