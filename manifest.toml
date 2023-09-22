@@ -5,7 +5,7 @@ name = "BookWyrm"
 description.en = "Platform for social reading"
 description.fr = "Plateforme de lecture sociale"
 
-version = "0.6.3~ynh1"
+version = "0.6.5~ynh1"
 
 maintainers = ["oufmilo"]
 
@@ -19,7 +19,7 @@ cpe = "cpe:2.3:a:joinbookwyrm:bookwyrm"
 fund = ["https://patreon.com/bookwyrm", "https://opencollective.com/bookwyrm"]
 
 [integration]
-yunohost = ">= 11.1.19"
+yunohost = ">= 11.2"
 architectures = "all"
 multi_instance = false
 ldap = false
@@ -31,7 +31,6 @@ ram.runtime = "50M"
 [install]
     [install.domain]
     type = "domain"
-    full_domain = true
 
     [install.init_main_permission]
     type = "group"
@@ -51,8 +50,8 @@ ram.runtime = "50M"
     [resources.sources]
 
         [resources.sources.main]
-        url = "https://github.com/bookwyrm-social/bookwyrm/archive/refs/tags/v0.6.3.tar.gz"
-        sha256 = "7d100630d00bd4a11f16cda0603859ab190aee2efafeabedd1d82469cb571e78"
+        url = "https://github.com/bookwyrm-social/bookwyrm/archive/refs/tags/v0.6.5.tar.gz"
+        sha256 = "3d3be2e417ef53bfce2dc7e6619f6e8b8398da8dc5823b8f83c4af10d64562fa"
 
         autoupdate.strategy = "latest_github_tag"
 
@@ -70,7 +69,7 @@ ram.runtime = "50M"
     main.default = 8000
 
     [resources.apt]
-    packages = "postgresql, postgresql-contrib, python3-venv, libpq-dev"
+    packages = "postgresql, postgresql-contrib, python3-venv, libpq-dev, python3-dev"
 
     [resources.database]
     type = "postgresql"
