@@ -5,7 +5,7 @@ name = "BookWyrm"
 description.en = "Platform for social reading"
 description.fr = "Plateforme de lecture sociale"
 
-version = "0.6.5~ynh1"
+version = "0.6.6~ynh1"
 
 maintainers = ["oufmilo"]
 
@@ -39,7 +39,7 @@ ram.runtime = "50M"
     [install.language]
     ask.en = "Choose the application language"
     ask.fr = "Choisissez la langue de l'application"
-    type = "string"
+    type = "select"
     choices = ["de-de", "en-us", "es-es", "fr-fr", "it-it", "pt-pt", "zh-hans"]
     default = "fr-fr"
 
@@ -50,8 +50,8 @@ ram.runtime = "50M"
     [resources.sources]
 
         [resources.sources.main]
-        url = "https://github.com/bookwyrm-social/bookwyrm/archive/refs/tags/v0.6.5.tar.gz"
-        sha256 = "3d3be2e417ef53bfce2dc7e6619f6e8b8398da8dc5823b8f83c4af10d64562fa"
+        url = "https://github.com/bookwyrm-social/bookwyrm/archive/refs/tags/v0.6.6.tar.gz"
+        sha256 = "e19b802e5ebcbaeb979f174f8f7fbd23690acee9000468a48016118257df5939"
 
         autoupdate.strategy = "latest_github_tag"
 

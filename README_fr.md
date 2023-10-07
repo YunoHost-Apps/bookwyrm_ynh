@@ -19,7 +19,7 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 BookWyrm est un réseau social pour garder la trace de vos lectures, parler de livres, écrire des critiques et découvrir quoi lire ensuite.
 
 
-**Version incluse :** 0.6.5~ynh1
+**Version incluse :** 0.6.6~ynh1
 
 **Démo :** https://joinbookwyrm.com/fr/
 
@@ -32,7 +32,6 @@ BookWyrm est un réseau social pour garder la trace de vos lectures, parler de l
 * Site officiel de l’app : <https://joinbookwyrm.com/fr/>
 * Documentation officielle de l’admin : <https://docs.joinbookwyrm.com/>
 * Dépôt de code officiel de l’app : <https://github.com/bookwyrm-social/bookwyrm>
-* Documentation YunoHost pour cette app : <https://yunohost.org/app_bookwyrm>
 * Signaler un bug : <https://github.com/YunoHost-Apps/bookwyrm_ynh/issues>
 
 ## Informations pour les développeurs
