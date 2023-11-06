@@ -13,7 +13,7 @@ ExecStart=__INSTALL_DIR__/venv/bin/celery -A celerywyrm worker -l info -Q high_p
 
 ProtectSystem=strict
 ProtectHome=tmpfs
-InaccessiblePaths=-/media -/mnt -/srv
+#InaccessiblePaths=-/media -/mnt -/srv
 PrivateTmp=yes
 TemporaryFileSystem=/var /run
 PrivateUsers=true
