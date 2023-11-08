@@ -11,7 +11,7 @@ WorkingDirectory=__INSTALL_DIR__/
 EnvironmentFile=__INSTALL_DIR__/.env
 ExecStart=__INSTALL_DIR__/venv/bin/gunicorn bookwyrm.wsgi:application --bind 127.0.0.1:__PORT__
 
-ProtectSystem=strict
+#ProtectSystem=strict
 ProtectHome=tmpfs
 #InaccessiblePaths=-/media -/mnt -/srv
 PrivateTmp=yes
