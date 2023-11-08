@@ -13,13 +13,13 @@ ExecStart=__INSTALL_DIR__/venv/bin/gunicorn bookwyrm.wsgi:application --bind 127
 
 #ProtectSystem=strict
 ProtectHome=tmpfs
-#InaccessiblePaths=-/media -/mnt -/srv
+InaccessiblePaths=-/media -/mnt -/srv
 PrivateTmp=yes
 #TemporaryFileSystem=/var /run
 #PrivateUsers=true
 #PrivateDevices=true
-#BindReadOnlyPaths=__INSTALL_DIR__
-#BindPaths=__INSTALL_DIR__/images __INSTALL_DIR__/static /var/run/postgresql
+BindReadOnlyPaths=__INSTALL_DIR__
+BindPaths=__INSTALL_DIR__/images __INSTALL_DIR__/static /var/run/postgresql
 LockPersonality=yes
 MemoryDenyWriteExecute=true
 PrivateMounts=true
