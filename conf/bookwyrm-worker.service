@@ -19,7 +19,7 @@ TemporaryFileSystem=/var /run
 #PrivateUsers=true
 PrivateDevices=true
 BindReadOnlyPaths=__INSTALL_DIR__
-BindPaths=__INSTALL_DIR__/images __INSTALL_DIR__/static /var/run/postgresql
+#BindPaths=__INSTALL_DIR__/images __INSTALL_DIR__/static /var/run/postgresql
 LockPersonality=yes
 MemoryDenyWriteExecute=true
 PrivateMounts=true
@@ -32,6 +32,12 @@ ProtectControlGroups=true
 RestrictRealtime=true
 RestrictNamespaces=net
 
+NoNewPrivileges=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+DevicePolicy=closed
+ProtectProc=invisible
+SystemCallArchitectures=native
+SystemCallFilter=~@clock @debug @module @mount @obsolete @reboot @setuid @swap @cpu-emulation @privileged
 
 # Denying access to capabilities that should not be relevant for webapps
 # Doc: https://man7.org/linux/man-pages/man7/capabilities.7.html

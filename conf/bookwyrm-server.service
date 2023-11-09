@@ -32,6 +32,10 @@ ProtectControlGroups=true
 RestrictRealtime=true
 RestrictNamespaces=net
 
+NoNewPrivileges=yes
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+DevicePolicy=closed
+ProtectProc=invisible
 SystemCallArchitectures=native
 SystemCallFilter=~@clock @debug @module @mount @obsolete @reboot @setuid @swap @cpu-emulation @privileged
 
