@@ -92,9 +92,9 @@ ynh_script_progression --message="Upgrading systemd configuration..." --weight=1
 ynh_add_config --template="../conf/bookwyrm.target" --destination="/etc/systemd/system/$app.target"
 
 # Create a dedicated systemd config
-ynh_add_systemd_config --service="$app-server" --template="$app-server.service"
-ynh_add_systemd_config --service="$app-worker" --template="$app-worker.service"
-ynh_add_systemd_config --service="$app-beat"   --template="$app-beat.service"
+ynh_add_systemd_config --service="$app-server" --template="bookwyrm-server.service"
+ynh_add_systemd_config --service="$app-worker" --template="bookwyrm-worker.service"
+ynh_add_systemd_config --service="$app-beat"   --template="bookwyrm-beat.service"
 
 #=================================================
 # GENERIC FINALIZATION
