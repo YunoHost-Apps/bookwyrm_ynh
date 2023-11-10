@@ -29,7 +29,7 @@ ProtectKernelModules=true
 ProtectKernelLogs=true
 ProtectControlGroups=true
 RestrictRealtime=true
-RestrictNamespaces=net
+RestrictNamespaces=yes
 
 NoNewPrivileges=yes
 RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
