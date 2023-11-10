@@ -92,9 +92,9 @@ ynh_script_progression --message="Upgrading systemd configuration..." --weight=1
 ynh_add_config --template="../conf/bookwyrm.target" --destination="/etc/systemd/system/$app.target"
 
 # Create a dedicated systemd config
-ynh_add_systemd_config --service="bookwyrm-server" --template="bookwyrm-server.service"
-ynh_add_systemd_config --service="bookwyrm-worker" --template="bookwyrm-worker.service"
-ynh_add_systemd_config --service="bookwyrm-beat"   --template="bookwyrm-beat.service"
+ynh_add_systemd_config --service="$app-server" --template="$app-server.service"
+ynh_add_systemd_config --service="$app-worker" --template="$app-worker.service"
+ynh_add_systemd_config --service="$app-beat"   --template="$app-beat.service"
 
 #=================================================
 # GENERIC FINALIZATION
@@ -103,18 +103,18 @@ ynh_add_systemd_config --service="bookwyrm-beat"   --template="bookwyrm-beat.ser
 #=================================================
 ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
 
-yunohost service add "bookwyrm-beat" --log="/var/log/$app/$app-beat.log"
-yunohost service add "bookwyrm-server" --log="/var/log/$app/$app.log"
-yunohost service add "bookwyrm-worker" --log="/var/log/$app/$app-worker.log"
+yunohost service add "$app-beat" --log="/var/log/$app/$app-beat.log"
+yunohost service add "$app-server" --log="/var/log/$app/$app.log"
+yunohost service add "$app-worker" --log="/var/log/$app/$app-worker.log"
 
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
 ynh_script_progression --message="Starting a systemd service..." --weight=1
 
-ynh_systemd_action --service_name="bookwyrm-beat" --action="start" --log_path="systemd" --line_match="Started"
-ynh_systemd_action --service_name="bookwyrm-server" --action="start" --log_path="systemd" --line_match="Booting worker with pid"
-ynh_systemd_action --service_name="bookwyrm-worker" --action="start" --log_path="systemd" --line_match="ready"
+ynh_systemd_action --service_name="$app-beat" --action="start" --log_path="systemd" --line_match="Started"
+ynh_systemd_action --service_name="$app-server" --action="start" --log_path="systemd" --line_match="Booting worker with pid"
+ynh_systemd_action --service_name="$app-worker" --action="start" --log_path="systemd" --line_match="ready"
 
 #=================================================
 # END OF SCRIPT

@@ -58,18 +58,18 @@ systemctl enable "bookwyrm-worker.service" --quiet
 #=================================================
 ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
 
-yunohost service add "bookwyrm-beat" --log="/var/log/$app/$app-beat.log"
-yunohost service add "bookwyrm-server" --log="/var/log/$app/$app.log"
-yunohost service add "bookwyrm-worker" --log="/var/log/$app/$app-worker.log"
+yunohost service add "$app-beat" --log="/var/log/$app/$app-beat.log"
+yunohost service add "$app-server" --log="/var/log/$app/$app.log"
+yunohost service add "$app-worker" --log="/var/log/$app/$app-worker.log"
 
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
 ynh_script_progression --message="Starting a systemd service..." --weight=1
 
-ynh_systemd_action --service_name="bookwyrm-beat" --action="start" --log_path="systemd" --line_match="Started"
-ynh_systemd_action --service_name="bookwyrm-server" --action="start" --log_path="systemd" --line_match="Booting worker with pid"
-ynh_systemd_action --service_name="bookwyrm-worker" --action="start" --log_path="systemd" --line_match="ready"
+ynh_systemd_action --service_name="$app-beat" --action="start" --log_path="systemd" --line_match="Started"
+ynh_systemd_action --service_name="$app-server" --action="start" --log_path="systemd" --line_match="Booting worker with pid"
+ynh_systemd_action --service_name="$app-worker" --action="start" --log_path="systemd" --line_match="ready"
 
 #=================================================
 # GENERIC FINALIZATION
