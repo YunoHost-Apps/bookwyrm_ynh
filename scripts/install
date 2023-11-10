@@ -56,7 +56,7 @@ $install_dir/venv/bin/python3 "$install_dir/manage.py" collectstatic --no-input
 ynh_script_progression --message="Installing Source Han Sans font..." --weight=1
 
 pushd $install_dir/static/fonts/source_han_sans
-    wget https://github.com/adobe-fonts/source-han-sans/raw/release/Variable/OTC/SourceHanSans-VF.ttf.ttc
+ynh_exec_warn_less wget https://github.com/adobe-fonts/source-han-sans/raw/release/Variable/OTC/SourceHanSans-VF.ttf.ttc
 popd
 
 #=================================================
