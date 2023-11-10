@@ -9,7 +9,8 @@ User=__APP__
 Group=__APP__
 WorkingDirectory=__INSTALL_DIR__/
 EnvironmentFile=__INSTALL_DIR__/.env
-ExecStart=__INSTALL_DIR__/venv/bin/gunicorn bookwyrm.wsgi:application --bind 127.0.0.1:__PORT__ --error-logfile /var/log/__APP__/__APP__.log
+ExecStart=__INSTALL_DIR__/venv/bin/gunicorn bookwyrm.wsgi:application --bind 127.0.0.1:__PORT__
+StandardOutput=append:/var/log/__APP__/__APP__.log
 StandardError=inherit
 
 [Install]

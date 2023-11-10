@@ -58,9 +58,9 @@ systemctl enable "bookwyrm-worker.service" --quiet
 #=================================================
 ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
 
-yunohost service add "bookwyrm-beat"
-yunohost service add "bookwyrm-server"
-yunohost service add "bookwyrm-worker"
+yunohost service add "bookwyrm-beat" --log="/var/log/$app/$app-beat.log"
+yunohost service add "bookwyrm-server" --log="/var/log/$app/$app.log"
+yunohost service add "bookwyrm-worker" --log="/var/log/$app/$app-worker.log"
 
 #=================================================
 # START SYSTEMD SERVICE
