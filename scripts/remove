@@ -52,20 +52,23 @@ ynh_remove_systemd_config --service="$app-worker" --log="/var/log/$app/$app-work
 ynh_secure_remove --file="/etc/systemd/system/$app.target"
 
 #=================================================
-# REMOVE APP MAIN DIR
-#=================================================
-ynh_script_progression --message="Removing app main directory..." --weight=1
-
-# Remove the app directory securely
-ynh_secure_remove --file="$install_dir"
-
-#=================================================
 # REMOVE NGINX CONFIGURATION
 #=================================================
 ynh_script_progression --message="Removing NGINX web server configuration..." --weight=1
 
 # Remove the dedicated NGINX config
 ynh_remove_nginx_config
+
+#=================================================
+# REMOVE LOGS
+#=================================================
+ynh_script_progression --message="Removing logs..."  --weight=5
+
+ynh_remove_logrotate
+
+# Remove the log files
+ynh_secure_remove --file="/var/log/$app"
+
 
 #=================================================
 # END OF SCRIPT
