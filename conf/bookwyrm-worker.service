@@ -1,7 +1,7 @@
 
 [Unit]
 Description=__APP__ celery worker
-After=redis.service postgresql.service
+After=network.target postgresql.service redis.service
 PartOf=__APP__.target
 
 [Service]
