@@ -10,8 +10,6 @@ Group=__APP__
 WorkingDirectory=__INSTALL_DIR__/
 EnvironmentFile=__INSTALL_DIR__/.env
 ExecStart=__INSTALL_DIR__/venv/bin/celery -A celerywyrm beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler
-StandardOutput=append:/var/log/__APP__/__APP__-beat.log
-StandardError=inherit
 
 NoNewPrivileges=yes
 PrivateTmp=yes
