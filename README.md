@@ -32,6 +32,7 @@ BookWyrm is a social network for tracking your reading, talking about books, wri
 * Official app website: <https://joinbookwyrm.com/fr/>
 * Official admin documentation: <https://docs.joinbookwyrm.com/>
 * Upstream app code repository: <https://github.com/bookwyrm-social/bookwyrm>
+* YunoHost Store: <https://apps.yunohost.org/app/bookwyrm>
 * Report a bug: <https://github.com/YunoHost-Apps/bookwyrm_ynh/issues>
 
 ## Developer info
