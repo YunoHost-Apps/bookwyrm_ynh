@@ -13,6 +13,8 @@ source /usr/share/yunohost/helpers
 # LOAD SETTINGS
 #=================================================
 
+key=$(ynh_app_setting_get --app=$app --key=key --value=$key)
+
 #=================================================
 # CHECK VERSION
 #=================================================
