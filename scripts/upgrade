@@ -13,7 +13,11 @@ source /usr/share/yunohost/helpers
 # LOAD SETTINGS
 #=================================================
 
-key=$(ynh_app_setting_get --app=$app --key=key --value=$key)
+# uncomment me after some updates whenever the key variable is set in install for some times
+#key=$(ynh_app_setting_get --app=$app --key=key --value=$key)
+
+#remove me when key setting is uncommented (see above)
+key=$(ynh_string_random --length=32)
 
 #=================================================
 # CHECK VERSION
