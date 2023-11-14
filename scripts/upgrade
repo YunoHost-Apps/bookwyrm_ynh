@@ -48,6 +48,16 @@ chmod 750 "$install_dir"
 chmod -R o-rwx "$install_dir"
 chown -R $app:www-data "$install_dir"
 
+#=================================================
+# CONFIGURE THE INSTALL SCRIPT
+#=================================================
+ynh_script_progression --message="Upgrading .env file..." --weight=1
+
+ynh_add_config --template="../conf/.env.production" --destination="$install_dir/.env"
+chmod 600 $install_dir/.env
+chown $app: "$install_dir/.env"
+
+set -a; source "$install_dir/.env"; set +a
 
 #=================================================
 # CONFIGURE THEN INSTALL SCRIPT AND DEPENDENCIES
