@@ -1,7 +1,7 @@
 
 [Unit]
 Description=__APP__ celery worker
-After=redis.service postgresql.service
+After=network.target postgresql.service redis.service
 PartOf=__APP__.target
 
 [Service]
@@ -9,7 +9,7 @@ User=__APP__
 Group=__APP__
 WorkingDirectory=__INSTALL_DIR__/
 EnvironmentFile=__INSTALL_DIR__/.env
-ExecStart=__INSTALL_DIR__/venv/bin/celery -A celerywyrm worker -l info -Q high_priority,medium_priority,low_priority,imports
+ExecStart=__INSTALL_DIR__/venv/bin/celery -A celerywyrm worker -l info -Q high_priority,medium_priority,low_priority,streams,images,suggested_users,email,connectors,lists,inbox,imports,import_triggered,broadcast,misc
 
 NoNewPrivileges=yes
 PrivateTmp=yes
