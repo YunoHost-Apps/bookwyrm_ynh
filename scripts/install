@@ -44,6 +44,8 @@ $install_dir/venv/bin/pip3 install -r "$install_dir/requirements.txt"
 #=================================================
 ynh_script_progression --message="Initializing database..." --weight=1
 
+ynh_psql_execute_as_root --sql="CREATE EXTENSION IF NOT Exists pg_trgm;" --database="$db_name"
+
 $install_dir/venv/bin/python3 "$install_dir/manage.py" migrate
 $install_dir/venv/bin/python3 "$install_dir/manage.py" initdb
 $install_dir/venv/bin/python3 "$install_dir/manage.py" compile_themes
