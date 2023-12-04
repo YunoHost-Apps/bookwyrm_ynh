@@ -9,9 +9,8 @@
 source _common.sh
 source /usr/share/yunohost/helpers
 
-
-admin_mail=$(ynh_user_get_info --username=$admin --key=username)
 key=$(ynh_string_random --length=32)
+ynh_app_setting_set --app=$app --key=key --value=$key
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -19,7 +18,8 @@ key=$(ynh_string_random --length=32)
 ynh_script_progression --message="Setting up source files..." --weight=1
 
 # Download, check integrity, uncompress and patch the source from app.src
-ynh_setup_source --dest_dir="$install_dir"
+ynh_setup_source --dest_dir="$install_dir" --source_id="main"
+ynh_setup_source --dest_dir="$install_dir/static/fonts/source_han_sans" --source_id="fonts"
 
 # Set permissions to app files
 chmod -R o-rwx "$install_dir"
@@ -33,8 +33,6 @@ ynh_script_progression --message="Installing service script..." --weight=1
 ynh_add_config --template="../conf/.env.production" --destination="$install_dir/.env"
 chmod 600 $install_dir/.env
 chown $app:www-data "$install_dir/.env"
-
-set -a; source "$install_dir/.env"; set +a
 
 mkdir "$install_dir/venv"
 python3 -m venv "$install_dir/venv"
@@ -59,16 +57,28 @@ ynh_script_progression --message="Configuring NGINX web server..." --weight=1
 ynh_add_nginx_config
 
 #=================================================
+# LOGROTATE CONFIGURATION
+#=================================================
+ynh_script_progression --message="Configuring logrotate..." --weight=1
+
+# Use logrotate to manage application logfile(s)
+ynh_use_logrotate --specific_user=$app
+touch /var/log/$app/$app.log
+touch /var/log/$app/$app-beat.log
+touch /var/log/$app/$app-worker.log
+chown -R $app:www-data /var/log/$app/
+
+#=================================================
 # SETUP SYSTEMD
 #=================================================
 ynh_script_progression --message="Configuring a systemd service..." --weight=1
 
-ynh_add_config --template="../conf/${app}.target" --destination="/etc/systemd/system/$app.target"
+ynh_add_config --template="../conf/bookwyrm.target" --destination="/etc/systemd/system/$app.target"
 
 # Create a dedicated systemd config
-ynh_add_systemd_config --service="${app}-server" --template="${app}-server.service"
-ynh_add_systemd_config --service="${app}-worker" --template="${app}-worker.service"
-ynh_add_systemd_config --service="${app}-beat"   --template="${app}-beat.service"
+ynh_add_systemd_config --service="$app-server" --template="bookwyrm-server.service"
+ynh_add_systemd_config --service="$app-worker" --template="bookwyrm-worker.service"
+ynh_add_systemd_config --service="$app-beat"   --template="bookwyrm-beat.service"
 
 #=================================================
 # GENERIC FINALIZATION
@@ -77,9 +87,9 @@ ynh_add_systemd_config --service="${app}-beat"   --template="${app}-beat.service
 #=================================================
 ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
 
-yunohost service add "${app}-beat"
-yunohost service add "${app}-server"
-yunohost service add "${app}-worker"
+yunohost service add "$app-beat" --log="/var/log/$app/$app-beat.log"
+yunohost service add "$app-server" --log="/var/log/$app/$app.log"
+yunohost service add "$app-worker" --log="/var/log/$app/$app-worker.log"
 
 #=================================================
 # START SYSTEMD SERVICE
@@ -87,9 +97,9 @@ yunohost service add "${app}-worker"
 ynh_script_progression --message="Starting a systemd service..." --weight=1
 
 # Start a systemd service
-ynh_systemd_action --service_name="${app}-beat" --action="start" --log_path="systemd" --line_match="Started"
-ynh_systemd_action --service_name="${app}-server" --action="start" --log_path="systemd" --line_match="Booting worker with pid"
-ynh_systemd_action --service_name="${app}-worker" --action="start" --log_path="systemd" --line_match="ready"
+ynh_systemd_action --service_name="$app-beat" --action="start" --log_path="systemd" --line_match="Started"
+ynh_systemd_action --service_name="$app-server" --action="start" --log_path="systemd" --line_match="Booting worker with pid"
+ynh_systemd_action --service_name="$app-worker" --action="start" --log_path="systemd" --line_match="ready"
 
 #=================================================
 # END OF SCRIPT
