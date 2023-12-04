@@ -55,6 +55,10 @@ ram.runtime = "50M"
 
         autoupdate.strategy = "latest_github_tag"
 
+        [resources.sources.fonts]
+        url = "https://github.com/adobe-fonts/source-han-sans/raw/release/Variable/OTC/SourceHanSans-VF.ttf.ttc"
+        sha256 = ""
+
 
     [resources.system_user]
     allow_email = true

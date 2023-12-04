@@ -45,7 +45,8 @@ then
 	ynh_script_progression --message="Upgrading source files..." --weight=1
 
 	# Download, check integrity, uncompress and patch the source from app.src
-	ynh_setup_source --dest_dir="$install_dir" --keep=".env"
+	ynh_setup_source --dest_dir="$install_dir" --source_id="main" --keep=".env"
+	ynh_setup_source --dest_dir="$install_dir/static/fonts/source_han_sans" --source_id="fonts"
 fi
 
 chmod 750 "$install_dir"
@@ -84,15 +85,6 @@ $install_dir/venv/bin/python3 "$install_dir/manage.py" collectstatic --no-input
 $install_dir/venv/bin/python3 "$install_dir/manage.py" populate_streams
 $install_dir/venv/bin/python3 "$install_dir/manage.py" makemigrations --merge --noinput
 $install_dir/venv/bin/python3 "$install_dir/manage.py" migrate
-
-#=================================================
-# INSTALL SOURCE HAN SANS FONT
-#=================================================
-ynh_script_progression --message="Installing Source Han Sans font..." --weight=1
-
-pushd $install_dir/static/fonts/source_han_sans
-ynh_exec_warn_less wget https://github.com/adobe-fonts/source-han-sans/raw/release/Variable/OTC/SourceHanSans-VF.ttf.ttc
-popd
 
 #=================================================
 # SET PERMISSIONS ON BOOKWYRM DIRECTORY
