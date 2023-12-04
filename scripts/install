@@ -34,8 +34,6 @@ ynh_add_config --template="../conf/.env.production" --destination="$install_dir/
 chmod 600 $install_dir/.env
 chown $app:www-data "$install_dir/.env"
 
-# set -a; source "$install_dir/.env"; set +a
-
 mkdir "$install_dir/venv"
 python3 -m venv "$install_dir/venv"
 $install_dir/venv/bin/pip3 install -r "$install_dir/requirements.txt"
