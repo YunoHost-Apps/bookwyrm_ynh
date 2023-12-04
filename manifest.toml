@@ -57,7 +57,7 @@ ram.runtime = "50M"
 
         [resources.sources.fonts]
         url = "https://github.com/adobe-fonts/source-han-sans/raw/release/Variable/OTC/SourceHanSans-VF.ttf.ttc"
-        sha256 = ""
+        sha256 = "1662483cf0cdaf04438618fc67e807a00dadb3fd3b4193c3c23cf7ad4dcc499f"
 
 
     [resources.system_user]
