@@ -21,6 +21,9 @@ ynh_script_progression --message="Setting up source files..." --weight=1
 ynh_setup_source --dest_dir="$install_dir" --source_id="main"
 ynh_setup_source --dest_dir="$install_dir/static/fonts/source_han_sans" --source_id="fonts"
 
+#temporary try 
+cp -rp $install_dir/VERSION $install_dir/bookwyrm/
+
 # Set permissions to app files
 chmod -R o-rwx "$install_dir"
 chown -R $app:www-data "$install_dir"
