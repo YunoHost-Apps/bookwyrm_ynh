@@ -21,7 +21,7 @@ fund = ["https://patreon.com/bookwyrm", "https://opencollective.com/bookwyrm"]
 [integration]
 yunohost = ">= 11.2"
 architectures = "all"
-multi_instance = true
+multi_instance = false
 ldap = false
 sso = false
 disk = "50M"
