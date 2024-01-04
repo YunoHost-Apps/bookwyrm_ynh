@@ -52,7 +52,7 @@ ram.runtime = "50M"
         [resources.sources.main]
         url = "https://github.com/bookwyrm-social/bookwyrm/archive/refs/tags/v0.7.1.tar.gz"
         sha256 = "a3a0a340fa1a9f716c4debb1ec242b2a7c275f30be4612fb245cd42f44868e5f"
-        in_subdir = true
+
         autoupdate.strategy = "latest_github_tag"
 
         [resources.sources.fonts]
