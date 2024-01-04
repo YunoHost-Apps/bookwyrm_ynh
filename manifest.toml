@@ -16,7 +16,7 @@ demo = "https://joinbookwyrm.com/fr/"
 admindoc = "https://docs.joinbookwyrm.com/"
 code = "https://github.com/bookwyrm-social/bookwyrm"
 cpe = "cpe:2.3:a:joinbookwyrm:bookwyrm"
-fund = ["https://patreon.com/bookwyrm", "https://opencollective.com/bookwyrm"]
+fund = "https://patreon.com/bookwyrm", "https://opencollective.com/bookwyrm"
 
 [integration]
 yunohost = ">= 11.2"
