@@ -22,11 +22,11 @@ ynh_setup_source --dest_dir="$install_dir" --source_id="main"
 ynh_setup_source --dest_dir="$install_dir/static/fonts/source_han_sans" --source_id="fonts"
 
 #temporary try 
-cp -rp $install_dir/VERSION $install_dir/bookwyrm/
+#cp -rp $install_dir/VERSION $install_dir/bookwyrm/
 
-pushd $install_dir
-ynh_exec_warn_less wget https://ci-apps-bookworm-dev.yunohost.org/ci/logs/198.log
-popd
+#pushd $install_dir
+#ynh_exec_warn_less wget https://ci-apps-bookworm-dev.yunohost.org/ci/logs/198.log
+#popd
 
 # Set permissions to app files
 chmod -R o-rwx "$install_dir"
