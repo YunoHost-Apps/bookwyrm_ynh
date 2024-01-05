@@ -32,9 +32,9 @@ upgrade_type=$(ynh_check_app_version_changed)
 #=================================================
 ynh_script_progression --message="Stopping a systemd service..." --weight=1
 
-ynh_systemd_action --action="stop" --service_name="bookwyrm-beat" --log_path="systemd" --line_match="Stopped"
-ynh_systemd_action --action="stop" --service_name="bookwyrm-server" --log_path="systemd" --line_match="Stopped"
-ynh_systemd_action --action="stop" --service_name="bookwyrm-worker" --log_path="systemd" --line_match="Stopped"
+ynh_systemd_action --action="stop" --service_name="bookwyrm-beat" --log_path="systemd"
+ynh_systemd_action --action="stop" --service_name="bookwyrm-server" --log_path="systemd"
+ynh_systemd_action --action="stop" --service_name="bookwyrm-worker" --log_path="systemd"
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -77,11 +77,11 @@ $install_dir/venv/bin/pip3 install -r "$install_dir/requirements.txt"
 #=================================================
 ynh_script_progression --message="Upgrading database..." --weight=1
 
+pushd $install_dir
 $install_dir/venv/bin/python3 "$install_dir/manage.py" compile_themes
 $install_dir/venv/bin/python3 "$install_dir/manage.py" collectstatic --no-input
-$install_dir/venv/bin/python3 "$install_dir/manage.py" populate_streams
-$install_dir/venv/bin/python3 "$install_dir/manage.py" makemigrations --merge --noinput
 $install_dir/venv/bin/python3 "$install_dir/manage.py" migrate
+popd
 
 #=================================================
 # SET PERMISSIONS ON BOOKWYRM DIRECTORY
@@ -125,7 +125,7 @@ yunohost service add "$app-worker" --log="/var/log/$app/$app-worker.log"
 #=================================================
 ynh_script_progression --message="Starting a systemd service..." --weight=1
 
-ynh_systemd_action --service_name="$app-beat" --action="start" --log_path="systemd" --line_match="Started"
+ynh_systemd_action --service_name="$app-beat" --action="start" --log_path="systemd" --line_match="Started bookwyrm celery beat process"
 ynh_systemd_action --service_name="$app-server" --action="start" --log_path="systemd" --line_match="Booting worker with pid"
 ynh_systemd_action --service_name="$app-worker" --action="start" --log_path="systemd" --line_match="ready"
 
