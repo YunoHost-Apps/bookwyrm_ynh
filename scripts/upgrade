@@ -80,8 +80,8 @@ ynh_script_progression --message="Upgrading database..." --weight=1
 pushd $install_dir
 $install_dir/venv/bin/python3 "$install_dir/manage.py" compile_themes
 $install_dir/venv/bin/python3 "$install_dir/manage.py" collectstatic --no-input
-$install_dir/venv/bin/python3 "$install_dir/manage.py" migrate
 $install_dir/venv/bin/python3 "$install_dir/manage.py" makemigrations --merge
+$install_dir/venv/bin/python3 "$install_dir/manage.py" migrate
 popd
 
 #=================================================
