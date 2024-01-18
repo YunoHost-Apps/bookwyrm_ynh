@@ -19,7 +19,7 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 BookWyrm est un réseau social pour garder la trace de vos lectures, parler de livres, écrire des critiques et découvrir quoi lire ensuite.
 
 
-**Version incluse :** 0.7.1~ynh1
+**Version incluse :** 0.7.2~ynh1
 
 **Démo :** https://joinbookwyrm.com/fr/
 
