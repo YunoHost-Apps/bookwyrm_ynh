@@ -51,14 +51,11 @@ ram.runtime = "50M"
         [resources.sources.main]
         url = "https://github.com/bookwyrm-social/bookwyrm/archive/refs/tags/v0.7.2.tar.gz"
         sha256 = "258831fa54c15fd8ea9a3ba06bb9afab016d754a0850118e65fdb70dfa022df7"
-
         autoupdate.strategy = "latest_github_release"
 
         [resources.sources.fonts]
         url = "https://github.com/adobe-fonts/source-han-sans/raw/release/Variable/OTC/SourceHanSans-VF.ttf.ttc"
         sha256 = "1662483cf0cdaf04438618fc67e807a00dadb3fd3b4193c3c23cf7ad4dcc499f"
-        autoupdate.strategy = "latest_github_release"
-        autoupdate.upstream = "https://github.com/adobe-fonts/source-han-sans"
 
     [resources.system_user]
     allow_email = true
