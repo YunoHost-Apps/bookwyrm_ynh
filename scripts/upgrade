@@ -45,8 +45,8 @@ then
 	ynh_script_progression --message="Upgrading source files..." --weight=1
 
 	# Download, check integrity, uncompress and patch the source from app.src
-	ynh_setup_source --dest_dir="$install_dir" --source_id="main" --keep=".env"
-	ynh_setup_source --dest_dir="$install_dir/static/fonts/source_han_sans" --source_id="fonts"
+	ynh_setup_source --dest_dir="$install_dir" --source_id="main" --full_replace=1 --keep=".env"
+	ynh_setup_source --dest_dir="$install_dir/static/fonts/source_han_sans" --source_id="fonts" --full_replace=1
 fi
 
 chmod 750 "$install_dir"
