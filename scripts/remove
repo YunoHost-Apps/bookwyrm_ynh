@@ -65,9 +65,6 @@ ynh_script_progression --message="Removing logs..."  --weight=5
 
 ynh_remove_logrotate
 
-# Remove the log files
-
-
 #=================================================
 # END OF SCRIPT
 #=================================================
