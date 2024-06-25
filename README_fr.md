@@ -19,7 +19,7 @@ Il NE doit PAS être modifié à la main.
 BookWyrm est un réseau social pour garder la trace de vos lectures, parler de livres, écrire des critiques et découvrir quoi lire ensuite.
 
 
-**Version incluse :** 0.7.2~ynh1
+**Version incluse :** 0.7.2~ynh2
 
 **Démo :** <https://joinbookwyrm.com/fr/>
 

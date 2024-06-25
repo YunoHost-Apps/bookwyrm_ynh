@@ -19,7 +19,7 @@ It shall NOT be edited by hand.
 BookWyrm is a social network for tracking your reading, talking about books, writing reviews, and discovering what to read next.
 
 
-**Shipped version:** 0.7.2~ynh1
+**Shipped version:** 0.7.2~ynh2
 
 **Demo:** <https://joinbookwyrm.com/fr/>
 
