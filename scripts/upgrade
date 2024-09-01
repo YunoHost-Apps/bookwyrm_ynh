@@ -7,9 +7,6 @@ source /usr/share/yunohost/helpers
 # LOAD SETTINGS
 #=================================================
 
-# uncomment me after some updates whenever the key variable is set in install for some times
-#key=$(ynh_app_setting_get --key=key --value=$key)
-
 #remove me when key setting is uncommented (see above)
 key=$(ynh_string_random --length=32)
 
@@ -25,28 +22,17 @@ ynh_systemctl --action="stop" --service="bookwyrm-worker" --log_path="systemd"
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
+ynh_script_progression "Upgrading source files..."
 
-# FIXME: this is still supported but the recommendation is now to *always* re-setup the app sources wether or not the upstream sources changed
-if ynh_app_upstream_version_changed
-then
-	ynh_script_progression "Upgrading source files..."
+ynh_setup_source --dest_dir="$install_dir" --source_id="main" --full_replace --keep=".env"
+ynh_setup_source --dest_dir="$install_dir/static/fonts/source_han_sans" --source_id="fonts" --full_replace
 
-	# Download, check integrity, uncompress and patch the source from app.src
-	ynh_setup_source --dest_dir="$install_dir" --source_id="main" --full_replace --keep=".env"
-	ynh_setup_source --dest_dir="$install_dir/static/fonts/source_han_sans" --source_id="fonts" --full_replace
-fi
-
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod 750 "$install_dir"
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod -R o-rwx "$install_dir"
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R $app:www-data "$install_dir"
 #=================================================
 # CONFIGURE THE INSTALL SCRIPT
 #=================================================
 ynh_script_progression "Upgrading .env file..."
 
 ynh_config_add --template=".env.production" --destination="$install_dir/.env"
-#REMOVEME? Assuming the file is setup using ynh_config_add, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod 600 $install_dir/.env
-#REMOVEME? Assuming the file is setup using ynh_config_add, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown $app: "$install_dir/.env"
 
 #=================================================
 # CONFIGURE THEN INSTALL SCRIPT AND DEPENDENCIES
@@ -70,11 +56,6 @@ $install_dir/venv/bin/python3 "$install_dir/manage.py" makemigrations --merge --
 $install_dir/venv/bin/python3 "$install_dir/manage.py" migrate
 popd
 
-#=================================================
-# SET PERMISSIONS ON BOOKWYRM DIRECTORY
-#=================================================
-
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R $app:www-data $install_dir
 #=================================================
 # NGINX CONFIGURATION
 #=================================================
