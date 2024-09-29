@@ -3,11 +3,6 @@
 source _common.sh
 source /usr/share/yunohost/helpers
 
-#=================================================
-# LOAD SETTINGS
-#=================================================
-
-#remove me when key setting is uncommented (see above)
 key=$(ynh_string_random --length=32)
 
 #=================================================
@@ -28,9 +23,9 @@ ynh_setup_source --dest_dir="$install_dir" --source_id="main" --full_replace --k
 ynh_setup_source --dest_dir="$install_dir/static/fonts/source_han_sans" --source_id="fonts" --full_replace
 
 #=================================================
-# CONFIGURE THE INSTALL SCRIPT
+# UPDATE A CONFIG FILE
 #=================================================
-ynh_script_progression "Upgrading .env file..."
+ynh_script_progression "Updating $app's configuration files..."
 
 ynh_config_add --template=".env.production" --destination="$install_dir/.env"
 
@@ -50,36 +45,24 @@ $install_dir/venv/bin/pip3 install -r "$install_dir/requirements.txt"
 ynh_script_progression "Upgrading database..."
 
 pushd $install_dir
-$install_dir/venv/bin/python3 "$install_dir/manage.py" compile_themes
-$install_dir/venv/bin/python3 "$install_dir/manage.py" collectstatic --no-input
-$install_dir/venv/bin/python3 "$install_dir/manage.py" makemigrations --merge --no-input
-$install_dir/venv/bin/python3 "$install_dir/manage.py" migrate
+	$install_dir/venv/bin/python3 "$install_dir/manage.py" compile_themes
+	$install_dir/venv/bin/python3 "$install_dir/manage.py" collectstatic --no-input
+	$install_dir/venv/bin/python3 "$install_dir/manage.py" makemigrations --merge --no-input
+	$install_dir/venv/bin/python3 "$install_dir/manage.py" migrate
 popd
 
 #=================================================
-# NGINX CONFIGURATION
+# REAPPLY SYSTEM CONFIGURATIONS
 #=================================================
-ynh_script_progression "Upgrading NGINX web server configuration..."
+ynh_script_progression "Upgrading system configurations related to $app..."
 
-# Create a dedicated NGINX config
 ynh_config_add_nginx
-
-#=================================================
-# SETUP SYSTEMD
-#=================================================
-ynh_script_progression "Upgrading systemd configuration..."
 
 ynh_config_add --template="bookwyrm.target" --destination="/etc/systemd/system/$app.target"
 
-# Create a dedicated systemd config
 ynh_config_add_systemd --service="$app-server" --template="bookwyrm-server.service"
 ynh_config_add_systemd --service="$app-worker" --template="bookwyrm-worker.service"
 ynh_config_add_systemd --service="$app-beat"   --template="bookwyrm-beat.service"
-
-#=================================================
-# INTEGRATE SERVICE IN YUNOHOST
-#=================================================
-ynh_script_progression "Integrating service in YunoHost..."
 
 yunohost service add "$app-beat" --log="/var/log/$app/$app-beat.log"
 yunohost service add "$app-server" --log="/var/log/$app/$app.log"

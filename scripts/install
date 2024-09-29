@@ -11,7 +11,6 @@ ynh_app_setting_set --key=key --value=$key
 #=================================================
 ynh_script_progression "Setting up source files..."
 
-# Download, check integrity, uncompress and patch the source from app.src
 ynh_setup_source --dest_dir="$install_dir" --source_id="main"
 ynh_setup_source --dest_dir="$install_dir/static/fonts/source_han_sans" --source_id="fonts"
 
@@ -32,49 +31,30 @@ $install_dir/venv/bin/pip3 install -r "$install_dir/requirements.txt"
 ynh_script_progression "Initializing database..."
 
 pushd $install_dir
-$install_dir/venv/bin/python3 "$install_dir/manage.py" migrate
-$install_dir/venv/bin/python3 "$install_dir/manage.py" initdb
-$install_dir/venv/bin/python3 "$install_dir/manage.py" compile_themes
-$install_dir/venv/bin/python3 "$install_dir/manage.py" collectstatic --no-input
+	$install_dir/venv/bin/python3 "$install_dir/manage.py" migrate
+	$install_dir/venv/bin/python3 "$install_dir/manage.py" initdb
+	$install_dir/venv/bin/python3 "$install_dir/manage.py" compile_themes
+	$install_dir/venv/bin/python3 "$install_dir/manage.py" collectstatic --no-input
 popd
 
 #=================================================
-# NGINX CONFIGURATION
+# SYSTEM CONFIGURATION
 #=================================================
-ynh_script_progression "Configuring NGINX web server..."
+ynh_script_progression "Adding system configurations related to $app..."
 
-# Create a dedicated NGINX config
 ynh_config_add_nginx
 
-#=================================================
-# LOGROTATE CONFIGURATION
-#=================================================
-ynh_script_progression "Configuring logrotate..."
-
-# Use logrotate to manage application logfile(s)
 ynh_config_add_logrotate
 
 touch /var/log/$app/$app.log
 touch /var/log/$app/$app-beat.log
 touch /var/log/$app/$app-worker.log
-#REMOVEME? Assuming ynh_config_add_logrotate is called, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R $app:www-data /var/log/$app/
-
-#=================================================
-# SETUP SYSTEMD
-#=================================================
-ynh_script_progression "Configuring $app's systemd service..."
 
 ynh_config_add --template="bookwyrm.target" --destination="/etc/systemd/system/$app.target"
 
-# Create a dedicated systemd config
 ynh_config_add_systemd --service="$app-server" --template="bookwyrm-server.service"
 ynh_config_add_systemd --service="$app-worker" --template="bookwyrm-worker.service"
 ynh_config_add_systemd --service="$app-beat"   --template="bookwyrm-beat.service"
-
-#=================================================
-# INTEGRATE SERVICE IN YUNOHOST
-#=================================================
-ynh_script_progression "Integrating service in YunoHost..."
 
 yunohost service add "$app-beat" --log="/var/log/$app/$app-beat.log"
 yunohost service add "$app-server" --log="/var/log/$app/$app.log"
@@ -85,7 +65,6 @@ yunohost service add "$app-worker" --log="/var/log/$app/$app-worker.log"
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
 
-# Start a systemd service
 ynh_systemctl --service="$app-beat" --action="start" --log_path="systemd" --wait_until="Started bookwyrm celery beat process"
 ynh_systemctl --service="$app-server" --action="start" --log_path="systemd" --wait_until="Booting worker with pid"
 ynh_systemctl --service="$app-worker" --action="start" --log_path="systemd" --wait_until="ready"
