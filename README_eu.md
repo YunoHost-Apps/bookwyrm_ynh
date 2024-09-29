@@ -5,7 +5,7 @@ EZ editatu eskuz.
 
 # BookWyrm YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/bookwyrm.svg)](https://dash.yunohost.org/appci/app/bookwyrm) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/bookwyrm.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/bookwyrm.maintain.svg)
+[![Integrazio maila](https://dash.yunohost.org/integration/bookwyrm.svg)](https://ci-apps.yunohost.org/ci/apps/bookwyrm/) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/bookwyrm.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/bookwyrm.maintain.svg)
 
 [![Instalatu BookWyrm YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=bookwyrm)
 
