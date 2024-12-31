@@ -1,39 +1,26 @@
 #!/bin/bash
 
-#=================================================
-# GENERIC START
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
 source _common.sh
 source /usr/share/yunohost/helpers
 
 key=$(ynh_string_random --length=32)
-ynh_app_setting_set --app=$app --key=key --value=$key
+ynh_app_setting_set --key=key --value=$key
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
-ynh_script_progression --message="Setting up source files..." --weight=1
+ynh_script_progression "Setting up source files..."
 
 # Download, check integrity, uncompress and patch the source from app.src
-ynh_setup_source --dest_dir="$install_dir"
-
-# Set permissions to app files
-chmod -R o-rwx "$install_dir"
-chown -R $app:www-data "$install_dir"
+ynh_setup_source --dest_dir="$install_dir" --source_id="main"
+ynh_setup_source --dest_dir="$install_dir/static/fonts/source_han_sans" --source_id="fonts"
 
 #=================================================
 # CONFIGURE THEN INSTALL SCRIPT AND DEPENDENCIES
 #=================================================
-ynh_script_progression --message="Installing service script..." --weight=1
+ynh_script_progression "Installing service script..."
 
-ynh_add_config --template="../conf/.env.production" --destination="$install_dir/.env"
-chmod 600 $install_dir/.env
-chown $app:www-data "$install_dir/.env"
-
-set -a; source "$install_dir/.env"; set +a
+ynh_config_add --template=".env.production" --destination="$install_dir/.env"
 
 mkdir "$install_dir/venv"
 python3 -m venv "$install_dir/venv"
@@ -42,62 +29,54 @@ $install_dir/venv/bin/pip3 install -r "$install_dir/requirements.txt"
 #=================================================
 # INITIALIZE DATABASE
 #=================================================
-ynh_script_progression --message="Initializing database..." --weight=1
+ynh_script_progression "Initializing database..."
 
 ynh_psql_execute_as_root --sql="CREATE EXTENSION IF NOT Exists pg_trgm;" --database="$db_name"
 
+pushd $install_dir
 $install_dir/venv/bin/python3 "$install_dir/manage.py" migrate
 $install_dir/venv/bin/python3 "$install_dir/manage.py" initdb
 $install_dir/venv/bin/python3 "$install_dir/manage.py" compile_themes
 $install_dir/venv/bin/python3 "$install_dir/manage.py" collectstatic --no-input
-
-#=================================================
-# INSTALL SOURCE HAN SANS FONT
-#=================================================
-ynh_script_progression --message="Installing Source Han Sans font..." --weight=1
-
-pushd $install_dir/static/fonts/source_han_sans
-ynh_exec_warn_less wget https://github.com/adobe-fonts/source-han-sans/raw/release/Variable/OTC/SourceHanSans-VF.ttf.ttc
 popd
 
 #=================================================
 # NGINX CONFIGURATION
 #=================================================
-ynh_script_progression --message="Configuring NGINX web server..." --weight=1
+ynh_script_progression "Configuring NGINX web server..."
 
 # Create a dedicated NGINX config
-ynh_add_nginx_config
+ynh_config_add_nginx
 
 #=================================================
 # LOGROTATE CONFIGURATION
 #=================================================
-ynh_script_progression --message="Configuring logrotate..." --weight=1
+ynh_script_progression "Configuring logrotate..."
 
 # Use logrotate to manage application logfile(s)
-ynh_use_logrotate --specific_user=$app
+ynh_config_add_logrotate
+
 touch /var/log/$app/$app.log
 touch /var/log/$app/$app-beat.log
 touch /var/log/$app/$app-worker.log
-chown -R $app:www-data /var/log/$app/
+#REMOVEME? Assuming ynh_config_add_logrotate is called, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R $app:www-data /var/log/$app/
 
 #=================================================
 # SETUP SYSTEMD
 #=================================================
-ynh_script_progression --message="Configuring a systemd service..." --weight=1
+ynh_script_progression "Configuring $app's systemd service..."
 
-ynh_add_config --template="../conf/bookwyrm.target" --destination="/etc/systemd/system/$app.target"
+ynh_config_add --template="bookwyrm.target" --destination="/etc/systemd/system/$app.target"
 
 # Create a dedicated systemd config
-ynh_add_systemd_config --service="$app-server" --template="bookwyrm-server.service"
-ynh_add_systemd_config --service="$app-worker" --template="bookwyrm-worker.service"
-ynh_add_systemd_config --service="$app-beat"   --template="bookwyrm-beat.service"
+ynh_config_add_systemd --service="$app-server" --template="bookwyrm-server.service"
+ynh_config_add_systemd --service="$app-worker" --template="bookwyrm-worker.service"
+ynh_config_add_systemd --service="$app-beat"   --template="bookwyrm-beat.service"
 
-#=================================================
-# GENERIC FINALIZATION
 #=================================================
 # INTEGRATE SERVICE IN YUNOHOST
 #=================================================
-ynh_script_progression --message="Integrating service in YunoHost..." --weight=1
+ynh_script_progression "Integrating service in YunoHost..."
 
 yunohost service add "$app-beat" --log="/var/log/$app/$app-beat.log"
 yunohost service add "$app-server" --log="/var/log/$app/$app.log"
@@ -106,15 +85,15 @@ yunohost service add "$app-worker" --log="/var/log/$app/$app-worker.log"
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
-ynh_script_progression --message="Starting a systemd service..." --weight=1
+ynh_script_progression "Starting $app's systemd service..."
 
 # Start a systemd service
-ynh_systemd_action --service_name="$app-beat" --action="start" --log_path="systemd" --line_match="Started"
-ynh_systemd_action --service_name="$app-server" --action="start" --log_path="systemd" --line_match="Booting worker with pid"
-ynh_systemd_action --service_name="$app-worker" --action="start" --log_path="systemd" --line_match="ready"
+ynh_systemctl --service="$app-beat" --action="start" --log_path="systemd" --wait_until="Started bookwyrm celery beat process"
+ynh_systemctl --service="$app-server" --action="start" --log_path="systemd" --wait_until="Booting worker with pid"
+ynh_systemctl --service="$app-worker" --action="start" --log_path="systemd" --wait_until="ready"
 
 #=================================================
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Installation of $app completed" --last
+ynh_script_progression "Installation of $app completed"
