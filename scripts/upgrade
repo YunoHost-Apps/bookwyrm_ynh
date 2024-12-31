@@ -49,7 +49,7 @@ $install_dir/venv/bin/pip3 install -r "$install_dir/requirements.txt"
 #=================================================
 ynh_script_progression "Upgrading database..."
 
-ynh_psql_execute_as_root --sql="CREATE EXTENSION IF NOT Exists pg_trgm;" --database="$db_name"
+ynh_psql_db_shell <<< "CREATE EXTENSION IF NOT Exists pg_trgm;"
 
 pushd $install_dir
 $install_dir/venv/bin/python3 "$install_dir/manage.py" compile_themes
