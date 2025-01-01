@@ -5,12 +5,22 @@ source /usr/share/yunohost/helpers
 
 db_name=$(ynh_app_setting_get --key=db_name)
 
+# Configure redis
+redis_activity_db=$(ynh_redis_get_free_db)
+ynh_app_setting_set --key=redis_activity_db --value="$redis_activity_db"
+
+redis_broker_db=$(ynh_redis_get_free_db)
+ynh_app_setting_set --key=redis_broker_db --value="$redis_broker_db"
+
 #=================================================
 # RESTORE THE APP MAIN DIR
 #=================================================
 ynh_script_progression "Restoring the app main directory..."
 
 ynh_restore "$install_dir"
+
+# reapply config with new Redis configuration
+ynh_config_add --template=".env.production" --destination="$install_dir/.env"
 
 #=================================================
 # RESTORE THE POSTGRESQL DATABASE
