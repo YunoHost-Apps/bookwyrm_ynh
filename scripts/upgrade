@@ -23,6 +23,24 @@ ynh_setup_source --dest_dir="$install_dir" --source_id="main" --full_replace --k
 ynh_setup_source --dest_dir="$install_dir/static/fonts/source_han_sans" --source_id="fonts" --full_replace
 
 #=================================================
+# ENSURE DOWNWARD COMPATIBILITY
+#=================================================
+ynh_script_progression "Ensuring downward compatibility..."
+
+# If redis_db doesn't exist, create it
+if [ -z "${redis_activity_db:-}" ]; then
+    # Configure redis
+    redis_activity_db=$(ynh_redis_get_free_db)
+    ynh_app_setting_set --key=redis_activity_db --value="$redis_activity_db"
+fi
+
+if [ -z "${redis_broker_db:-}" ]; then
+    # Configure redis
+    redis_broker_db=$(ynh_redis_get_free_db)
+    ynh_app_setting_set --key=redis_broker_db --value="$redis_broker_db"
+fi
+
+#=================================================
 # UPDATE A CONFIG FILE
 #=================================================
 ynh_script_progression "Updating $app's configuration files..."
