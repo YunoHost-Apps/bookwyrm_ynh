@@ -7,8 +7,11 @@ key=$(ynh_string_random --length=32)
 ynh_app_setting_set --key=key --value=$key
 
 # Configure redis
-redis_db=$(ynh_redis_get_free_db)
-ynh_app_setting_set --key=redis_db --value="$redis_db"
+redis_activity_db=$(ynh_redis_get_free_db)
+ynh_app_setting_set --key=redis_activity_db --value="$redis_activity_db"
+
+redis_broker_db=$(ynh_redis_get_free_db)
+ynh_app_setting_set --key=redis_broker_db --value="$redis_broker_db"
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
