@@ -5,7 +5,9 @@
 
 # YunoHost 上的 BookWyrm
 
-[![集成程度](https://dash.yunohost.org/integration/bookwyrm.svg)](https://ci-apps.yunohost.org/ci/apps/bookwyrm/) ![工作状态](https://ci-apps.yunohost.org/ci/badges/bookwyrm.status.svg) ![维护状态](https://ci-apps.yunohost.org/ci/badges/bookwyrm.maintain.svg)
+[![集成程度](https://apps.yunohost.org/badge/integration/bookwyrm)](https://ci-apps.yunohost.org/ci/apps/bookwyrm/)
+![工作状态](https://apps.yunohost.org/badge/state/bookwyrm)
+![维护状态](https://apps.yunohost.org/badge/maintained/bookwyrm)
 
 [![使用 YunoHost 安装 BookWyrm](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=bookwyrm)
 
