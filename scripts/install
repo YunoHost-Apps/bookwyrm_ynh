@@ -6,6 +6,10 @@ source /usr/share/yunohost/helpers
 key=$(ynh_string_random --length=32)
 ynh_app_setting_set --key=key --value=$key
 
+# Configure redis
+redis_db=$(ynh_redis_get_free_db)
+ynh_app_setting_set --key=redis_db --value="$redis_db"
+
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
