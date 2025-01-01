@@ -24,9 +24,9 @@ ynh_systemctl --service="$app-beat" --action="stop" --log_path="systemd" --wait_
 ynh_systemctl --service="$app-server" --action="stop" --log_path="systemd" --wait_until="Stopped $app"
 ynh_systemctl --service="$app-worker" --action="stop" --log_path="systemd" --wait_until="Stopped $app"
 
-ynh_config_remove_systemd"$app-beat"
-ynh_config_remove_systemd"$app-server"
-ynh_config_remove_systemd"$app-worker"
+ynh_config_remove_systemd "$app-beat"
+ynh_config_remove_systemd "$app-server"
+ynh_config_remove_systemd "$app-worker"
 
 ynh_safe_rm "/etc/systemd/system/$app.target"
 
