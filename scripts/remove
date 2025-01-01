@@ -1,72 +1,41 @@
 #!/bin/bash
 
-#=================================================
-# GENERIC START
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
 source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
-# STANDARD REMOVE
+# REMOVE SYSTEM CONFIGURATIONS
 #=================================================
-# REMOVE SERVICE INTEGRATION IN YUNOHOST
-#=================================================
+ynh_script_progression "Removing system configurations related to $app..."
 
-# Remove the service from the list of services known by YunoHost (added from `yunohost service add`)
-if ynh_exec_warn_less yunohost service status "$app-server" >/dev/null
-then
-	ynh_script_progression --message="Removing $app-server service integration..."
+if ynh_hide_warnings yunohost service status "$app-server" >/dev/null; then
 	yunohost service remove "$app-server"
 fi
 
-if ynh_exec_warn_less yunohost service status "$app-worker" >/dev/null
-then
-	ynh_script_progression --message="Removing $app-worker service integration..."
+if ynh_hide_warnings yunohost service status "$app-worker" >/dev/null; then
 	yunohost service remove "$app-worker"
 fi
 
-if ynh_exec_warn_less yunohost service status "$app-beat" >/dev/null
-then
-	ynh_script_progression --message="Removing $app-beat service integration..."
+if ynh_hide_warnings yunohost service status "$app-beat" >/dev/null; then
 	yunohost service remove "$app-beat"
 fi
 
-#=================================================
-# STOP AND REMOVE SERVICE
-#=================================================
-ynh_script_progression --message="Stopping and removing the systemd service..." --weight=1
+ynh_systemctl --service="$app-beat" --action="stop" --log_path="systemd" --wait_until="Stopped $app"
+ynh_systemctl --service="$app-server" --action="stop" --log_path="systemd" --wait_until="Stopped $app"
+ynh_systemctl --service="$app-worker" --action="stop" --log_path="systemd" --wait_until="Stopped $app"
 
-ynh_systemd_action --service_name="$app-beat" --action="stop" --log_path="systemd" --line_match="Stopped $app"
-ynh_systemd_action --service_name="$app-server" --action="stop" --log_path="systemd" --line_match="Stopped $app"
-ynh_systemd_action --service_name="$app-worker" --action="stop" --log_path="systemd" --line_match="Stopped $app"
+ynh_config_remove_systemd "$app-beat"
+ynh_config_remove_systemd "$app-server"
+ynh_config_remove_systemd "$app-worker"
 
-# Remove the dedicated systemd config
-ynh_remove_systemd_config --service="$app-beat"
-ynh_remove_systemd_config --service="$app-server"
-ynh_remove_systemd_config --service="$app-worker"
+ynh_safe_rm "/etc/systemd/system/$app.target"
 
-ynh_secure_remove --file="/etc/systemd/system/$app.target"
+ynh_config_remove_nginx
 
-#=================================================
-# REMOVE NGINX CONFIGURATION
-#=================================================
-ynh_script_progression --message="Removing NGINX web server configuration..." --weight=1
-
-# Remove the dedicated NGINX config
-ynh_remove_nginx_config
-
-#=================================================
-# REMOVE LOGS
-#=================================================
-ynh_script_progression --message="Removing logs..."  --weight=5
-
-ynh_remove_logrotate
+ynh_config_remove_logrotate
 
 #=================================================
 # END OF SCRIPT
 #=================================================
 
-ynh_script_progression --message="Removal of $app completed" --last
+ynh_script_progression "Removal of $app completed"

@@ -5,7 +5,9 @@ EZ editatu eskuz.
 
 # BookWyrm YunoHost-erako
 
-[![Integrazio maila](https://dash.yunohost.org/integration/bookwyrm.svg)](https://dash.yunohost.org/appci/app/bookwyrm) ![Funtzionamendu egoera](https://ci-apps.yunohost.org/ci/badges/bookwyrm.status.svg) ![Mantentze egoera](https://ci-apps.yunohost.org/ci/badges/bookwyrm.maintain.svg)
+[![Integrazio maila](https://apps.yunohost.org/badge/integration/bookwyrm)](https://ci-apps.yunohost.org/ci/apps/bookwyrm/)
+![Funtzionamendu egoera](https://apps.yunohost.org/badge/state/bookwyrm)
+![Mantentze egoera](https://apps.yunohost.org/badge/maintained/bookwyrm)
 
 [![Instalatu BookWyrm YunoHost-ekin](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=bookwyrm)
 
@@ -19,7 +21,7 @@ EZ editatu eskuz.
 BookWyrm is a social network for tracking your reading, talking about books, writing reviews, and discovering what to read next.
 
 
-**Paketatutako bertsioa:** 0.7.2~ynh2
+**Paketatutako bertsioa:** 0.7.2~ynh3
 
 **Demoa:** <https://joinbookwyrm.com/fr/>
 

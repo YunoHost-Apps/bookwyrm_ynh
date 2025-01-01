@@ -5,7 +5,9 @@ It shall NOT be edited by hand.
 
 # BookWyrm for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/bookwyrm.svg)](https://dash.yunohost.org/appci/app/bookwyrm) ![Working status](https://ci-apps.yunohost.org/ci/badges/bookwyrm.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/bookwyrm.maintain.svg)
+[![Integration level](https://apps.yunohost.org/badge/integration/bookwyrm)](https://ci-apps.yunohost.org/ci/apps/bookwyrm/)
+![Working status](https://apps.yunohost.org/badge/state/bookwyrm)
+![Maintenance status](https://apps.yunohost.org/badge/maintained/bookwyrm)
 
 [![Install BookWyrm with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=bookwyrm)
 
@@ -19,7 +21,7 @@ It shall NOT be edited by hand.
 BookWyrm is a social network for tracking your reading, talking about books, writing reviews, and discovering what to read next.
 
 
-**Shipped version:** 0.7.2~ynh2
+**Shipped version:** 0.7.2~ynh3
 
 **Demo:** <https://joinbookwyrm.com/fr/>
 

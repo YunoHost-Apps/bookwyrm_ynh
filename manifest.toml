@@ -5,7 +5,7 @@ name = "BookWyrm"
 description.en = "Platform for social reading"
 description.fr = "Plateforme de lecture sociale"
 
-version = "0.7.2~ynh2"
+version = "0.7.2~ynh3"
 
 maintainers = ["oufmilo"]
 
@@ -18,7 +18,8 @@ code = "https://github.com/bookwyrm-social/bookwyrm"
 cpe = "cpe:2.3:a:joinbookwyrm:bookwyrm"
 
 [integration]
-yunohost = ">= 11.2"
+yunohost = ">= 11.2.30"
+helpers_version = "2.1"
 architectures = "all"
 multi_instance = false
 ldap = false
@@ -61,6 +62,7 @@ ram.runtime = "50M"
     allow_email = true
 
     [resources.install_dir]
+    group = "www-data:r-x"
 
     [resources.data_dir]
 
@@ -71,7 +73,7 @@ ram.runtime = "50M"
     main.default = 8000
 
     [resources.apt]
-    packages = "postgresql, postgresql-contrib, python3-venv, libpq-dev, python3-pip, python3-dev, libpq-dev"
+    packages = "postgresql, postgresql-contrib, python3-venv, libpq-dev, python3-pip, python3-dev, libpq-dev, redis-server"
 
     [resources.database]
     type = "postgresql"
