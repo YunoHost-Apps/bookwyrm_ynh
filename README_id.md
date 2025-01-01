@@ -21,7 +21,7 @@ Ini TIDAK boleh diedit dengan tangan.
 BookWyrm is a social network for tracking your reading, talking about books, writing reviews, and discovering what to read next.
 
 
-**Versi terkirim:** 0.7.2~ynh2
+**Versi terkirim:** 0.7.2~ynh3
 
 **Demo:** <https://joinbookwyrm.com/fr/>
 

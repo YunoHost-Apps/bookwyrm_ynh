@@ -21,7 +21,7 @@ EZ editatu eskuz.
 BookWyrm is a social network for tracking your reading, talking about books, writing reviews, and discovering what to read next.
 
 
-**Paketatutako bertsioa:** 0.7.2~ynh2
+**Paketatutako bertsioa:** 0.7.2~ynh3
 
 **Demoa:** <https://joinbookwyrm.com/fr/>
 

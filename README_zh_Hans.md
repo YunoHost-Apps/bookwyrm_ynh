@@ -21,7 +21,7 @@
 BookWyrm is a social network for tracking your reading, talking about books, writing reviews, and discovering what to read next.
 
 
-**分发版本：** 0.7.2~ynh2
+**分发版本：** 0.7.2~ynh3
 
 **演示：** <https://joinbookwyrm.com/fr/>
 

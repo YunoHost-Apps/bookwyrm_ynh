@@ -21,7 +21,7 @@ NON debe editarse manualmente.
 BookWyrm is a social network for tracking your reading, talking about books, writing reviews, and discovering what to read next.
 
 
-**Versión proporcionada:** 0.7.2~ynh2
+**Versión proporcionada:** 0.7.2~ynh3
 
 **Demo:** <https://joinbookwyrm.com/fr/>
 
