@@ -5,7 +5,9 @@ Hij mag NIET handmatig aangepast worden.
 
 # BookWyrm voor Yunohost
 
-[![Integratieniveau](https://dash.yunohost.org/integration/bookwyrm.svg)](https://ci-apps.yunohost.org/ci/apps/bookwyrm/) ![Mate van functioneren](https://ci-apps.yunohost.org/ci/badges/bookwyrm.status.svg) ![Onderhoudsstatus](https://ci-apps.yunohost.org/ci/badges/bookwyrm.maintain.svg)
+[![Integratieniveau](https://apps.yunohost.org/badge/integration/bookwyrm)](https://ci-apps.yunohost.org/ci/apps/bookwyrm/)
+![Mate van functioneren](https://apps.yunohost.org/badge/state/bookwyrm)
+![Onderhoudsstatus](https://apps.yunohost.org/badge/maintained/bookwyrm)
 
 [![BookWyrm met Yunohost installeren](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=bookwyrm)
 

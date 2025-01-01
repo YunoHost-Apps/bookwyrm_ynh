@@ -5,7 +5,9 @@ Ini TIDAK boleh diedit dengan tangan.
 
 # BookWyrm untuk YunoHost
 
-[![Tingkat integrasi](https://dash.yunohost.org/integration/bookwyrm.svg)](https://ci-apps.yunohost.org/ci/apps/bookwyrm/) ![Status kerja](https://ci-apps.yunohost.org/ci/badges/bookwyrm.status.svg) ![Status pemeliharaan](https://ci-apps.yunohost.org/ci/badges/bookwyrm.maintain.svg)
+[![Tingkat integrasi](https://apps.yunohost.org/badge/integration/bookwyrm)](https://ci-apps.yunohost.org/ci/apps/bookwyrm/)
+![Status kerja](https://apps.yunohost.org/badge/state/bookwyrm)
+![Status pemeliharaan](https://apps.yunohost.org/badge/maintained/bookwyrm)
 
 [![Pasang BookWyrm dengan YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=bookwyrm)
 

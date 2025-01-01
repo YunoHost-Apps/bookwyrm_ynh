@@ -5,7 +5,9 @@
 
 # BookWyrm для YunoHost
 
-[![Уровень интеграции](https://dash.yunohost.org/integration/bookwyrm.svg)](https://ci-apps.yunohost.org/ci/apps/bookwyrm/) ![Состояние работы](https://ci-apps.yunohost.org/ci/badges/bookwyrm.status.svg) ![Состояние сопровождения](https://ci-apps.yunohost.org/ci/badges/bookwyrm.maintain.svg)
+[![Уровень интеграции](https://apps.yunohost.org/badge/integration/bookwyrm)](https://ci-apps.yunohost.org/ci/apps/bookwyrm/)
+![Состояние работы](https://apps.yunohost.org/badge/state/bookwyrm)
+![Состояние сопровождения](https://apps.yunohost.org/badge/maintained/bookwyrm)
 
 [![Установите BookWyrm с YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=bookwyrm)
 
