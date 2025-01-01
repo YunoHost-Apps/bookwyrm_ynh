@@ -37,6 +37,8 @@ $install_dir/venv/bin/pip3 install -r "$install_dir/requirements.txt"
 #=================================================
 ynh_script_progression "Initializing database..."
 
+ynh_psql_db_shell <<< "CREATE EXTENSION IF NOT Exists pg_trgm;"
+
 pushd $install_dir
 	$install_dir/venv/bin/python3 "$install_dir/manage.py" migrate
 	$install_dir/venv/bin/python3 "$install_dir/manage.py" initdb
@@ -53,9 +55,14 @@ ynh_config_add_nginx
 
 ynh_config_add_logrotate
 
-touch /var/log/$app/$app.log
-touch /var/log/$app/$app-beat.log
-touch /var/log/$app/$app-worker.log
+ynh_exec_as_app touch /var/log/$app/$app.log
+ynh_exec_as_app touch /var/log/$app/$app-beat.log
+ynh_exec_as_app touch /var/log/$app/$app-worker.log
+
+#=================================================
+# SETUP SYSTEMD
+#=================================================
+ynh_script_progression "Configuring $app's systemd service..."
 
 ynh_config_add --template="bookwyrm.target" --destination="/etc/systemd/system/$app.target"
 
