@@ -1,26 +1,16 @@
 #!/bin/bash
 
-# Keep this path for calling _common.sh inside the execution's context of backup and restore scripts
 source ../settings/scripts/_common.sh
 source /usr/share/yunohost/helpers
 
 db_name=$(ynh_app_setting_get --key=db_name)
 
-#=================================================
-# STANDARD RESTORATION STEPS
-#=================================================
-# RESTORE THE NGINX CONFIGURATION
-#=================================================
-ynh_script_progression "Restoring the NGINX web server configuration..."
+# Configure redis
+redis_activity_db=$(ynh_redis_get_free_db)
+ynh_app_setting_set --key=redis_activity_db --value="$redis_activity_db"
 
-ynh_restore "/etc/nginx/conf.d/$domain.d/$app.conf"
-
-#=================================================
-# RESTORE THE POSTGRESQL DATABASE
-#=================================================
-ynh_script_progression "Restoring the PostgreSQL database..."
-
-ynh_psql_db_shell  < "./db.sql"
+redis_broker_db=$(ynh_redis_get_free_db)
+ynh_app_setting_set --key=redis_broker_db --value="$redis_broker_db"
 
 #=================================================
 # RESTORE THE APP MAIN DIR
@@ -29,10 +19,22 @@ ynh_script_progression "Restoring the app main directory..."
 
 ynh_restore "$install_dir"
 
+# reapply config with new Redis configuration
+ynh_config_add --template=".env.production" --destination="$install_dir/.env"
+
 #=================================================
-# RESTORE SYSTEMD
+# RESTORE THE POSTGRESQL DATABASE
 #=================================================
-ynh_script_progression "Restoring $app's systemd service..."
+ynh_script_progression "Restoring the PostgreSQL database..."
+
+ynh_psql_db_shell < ./db.sql
+
+#=================================================
+# RESTORE SYSTEM CONFIGURATIONS
+#=================================================
+ynh_script_progression "Restoring system configurations related to $app..."
+
+ynh_restore "/etc/nginx/conf.d/$domain.d/$app.conf"
 
 ynh_restore "/etc/systemd/system/bookwyrm-beat.service"
 ynh_restore "/etc/systemd/system/bookwyrm-server.service"
@@ -43,28 +45,18 @@ systemctl enable "bookwyrm-beat.service" --quiet
 systemctl enable "bookwyrm-server.service" --quiet
 systemctl enable "bookwyrm-worker.service" --quiet
 
-#=================================================
-# INTEGRATE SERVICE IN YUNOHOST
-#=================================================
-ynh_script_progression "Integrating service in YunoHost..."
-
 yunohost service add "$app-beat" --log="/var/log/$app/$app-beat.log"
 yunohost service add "$app-server" --log="/var/log/$app/$app.log"
 yunohost service add "$app-worker" --log="/var/log/$app/$app-worker.log"
 
 #=================================================
-# START SYSTEMD SERVICE
+# RELOAD NGINX AND PHP-FPM OR THE APP SERVICE
 #=================================================
-ynh_script_progression "Starting $app's systemd service..."
+ynh_script_progression "Reloading NGINX web server and $app's service..."
 
 ynh_systemctl --service="$app-beat" --action="start" --log_path="systemd" --wait_until="Started bookwyrm celery beat process"
 ynh_systemctl --service="$app-server" --action="start" --log_path="systemd" --wait_until="Booting worker with pid"
 ynh_systemctl --service="$app-worker" --action="start" --log_path="systemd" --wait_until="ready"
-
-#=================================================
-# RELOAD NGINX
-#=================================================
-ynh_script_progression "Reloading NGINX web server..."
 
 ynh_systemctl --service=nginx --action=reload
 
