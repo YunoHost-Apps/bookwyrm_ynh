@@ -19,7 +19,7 @@ ynh_systemctl --action="stop" --service="bookwyrm-worker" --log_path="systemd"
 #=================================================
 ynh_script_progression "Upgrading source files..."
 
-ynh_setup_source --dest_dir="$install_dir" --source_id="main" --full_replace --keep=".env"
+ynh_setup_source --dest_dir="$install_dir" --source_id="main" --full_replace --keep=".env images"
 ynh_setup_source --dest_dir="$install_dir/static/fonts/source_han_sans" --source_id="fonts" --full_replace
 
 #=================================================
