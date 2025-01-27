@@ -19,7 +19,7 @@ ynh_systemctl --action="stop" --service="bookwyrm-worker" --log_path="systemd"
 #=================================================
 ynh_script_progression "Upgrading source files..."
 
-ynh_setup_source --dest_dir="$install_dir" --source_id="main" --full_replace --keep=".env"
+ynh_setup_source --dest_dir="$install_dir" --source_id="main" --full_replace --keep=".env images"
 ynh_setup_source --dest_dir="$install_dir/static/fonts/source_han_sans" --source_id="fonts" --full_replace
 
 #=================================================
@@ -93,7 +93,7 @@ yunohost service add "$app-worker" --log="/var/log/$app/$app-worker.log"
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
 
-ynh_systemctl --service="$app-beat" --action="start" --log_path="systemd" --wait_until="Started bookwyrm celery beat process"
+ynh_systemctl --service="$app-beat" --action="start" --log_path="systemd" --wait_until="Started bookwyrm-beat.service"
 ynh_systemctl --service="$app-server" --action="start" --log_path="systemd" --wait_until="Booting worker with pid"
 ynh_systemctl --service="$app-worker" --action="start" --log_path="systemd" --wait_until="ready"
 
