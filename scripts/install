@@ -79,7 +79,7 @@ yunohost service add "$app-worker" --log="/var/log/$app/$app-worker.log"
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
 
-ynh_systemctl --service="$app-beat" --action="start" --log_path="systemd" --wait_until="Started bookwyrm celery beat process"
+ynh_systemctl --service="$app-beat" --action="start" --log_path="systemd" --wait_until="Started bookwyrm-beat.service"
 ynh_systemctl --service="$app-server" --action="start" --log_path="systemd" --wait_until="Booting worker with pid"
 ynh_systemctl --service="$app-worker" --action="start" --log_path="systemd" --wait_until="ready"
 
