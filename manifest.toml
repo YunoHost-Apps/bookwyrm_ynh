@@ -5,7 +5,7 @@ name = "BookWyrm"
 description.en = "Platform for social reading"
 description.fr = "Plateforme de lecture sociale"
 
-version = "0.7.2~ynh3"
+version = "0.7.2~ynh4"
 
 maintainers = ["oufmilo"]
 
