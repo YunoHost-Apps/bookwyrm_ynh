@@ -28,9 +28,13 @@ ynh_script_progression "Installing service script..."
 
 ynh_config_add --template=".env.production" --destination="$install_dir/.env"
 
-mkdir "$install_dir/venv"
-python3 -m venv "$install_dir/venv"
-$install_dir/venv/bin/pip3 install -r "$install_dir/requirements.txt"
+pushd "$install_dir"
+    ynh_exec_as_app python3 -m venv "$install_dir/venv"
+	ynh_hide_warnings ynh_exec_as_app "$install_dir/venv/bin/pip" install --upgrade pip gunicorn
+    ynh_hide_warnings ynh_exec_as_app "$install_dir/venv/bin/pip" install -r "$install_dir/requirements.txt"
+
+    ynh_safe_rm "$install_dir/.cache/pip"
+popd
 
 #=================================================
 # INITIALIZE DATABASE
@@ -39,7 +43,7 @@ ynh_script_progression "Initializing database..."
 
 ynh_psql_db_shell <<< "CREATE EXTENSION IF NOT Exists pg_trgm;"
 
-pushd $install_dir
+pushd "$install_dir"
 	$install_dir/venv/bin/python3 "$install_dir/manage.py" migrate
 	$install_dir/venv/bin/python3 "$install_dir/manage.py" initdb
 	$install_dir/venv/bin/python3 "$install_dir/manage.py" compile_themes
