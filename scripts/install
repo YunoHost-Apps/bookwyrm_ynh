@@ -36,8 +36,6 @@ pushd "$install_dir"
     ynh_safe_rm "$install_dir/.cache/pip"
 popd
 
-ls -lah /var/www/bookwyrm/venv/bin/
-
 #=================================================
 # INITIALIZE DATABASE
 #=================================================
