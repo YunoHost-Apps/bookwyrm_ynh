@@ -30,6 +30,7 @@ ynh_config_add --template=".env.production" --destination="$install_dir/.env"
 
 pushd "$install_dir"
     ynh_exec_as_app python3 -m venv "$install_dir/venv"
+	ynh_hide_warnings ynh_exec_as_app "$install_dir/venv/bin/pip" install --upgrade pip gunicorn
     ynh_hide_warnings ynh_exec_as_app "$install_dir/venv/bin/pip" install -r "$install_dir/requirements.txt"
 
     ynh_safe_rm "$install_dir/.cache/pip"
