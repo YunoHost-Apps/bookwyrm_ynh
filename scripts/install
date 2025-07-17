@@ -19,7 +19,14 @@ ynh_app_setting_set --key=redis_broker_db --value="$redis_broker_db"
 ynh_script_progression "Setting up source files..."
 
 ynh_setup_source --dest_dir="$install_dir" --source_id="main"
-ynh_setup_source --dest_dir="$install_dir/static/fonts/source_han_sans" --source_id="fonts"
+ynh_setup_source --dest_dir="$install_dir/fonts" --source_id="fonts"
+mkdir -p "$install_dir"/static
+mkdir -p "$install_dir"/static/fonts
+
+mv "$install_dir"/fonts/OTC/SourceHanSans-VF.ttf.ttc "$install_dir/static/fonts/"
+ynh_safe_rm "$install_dir"/fonts
+
+chown -R "$app":www-data "$install_dir"/static
 
 #=================================================
 # CONFIGURE THEN INSTALL SCRIPT AND DEPENDENCIES
