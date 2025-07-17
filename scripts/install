@@ -21,10 +21,7 @@ ynh_script_progression "Setting up source files..."
 ynh_setup_source --dest_dir="$install_dir" --source_id="main"
 ynh_setup_source --dest_dir="$install_dir/fonts" --source_id="fonts"
 
-ls -lah "$install_dir"/fonts
-ls -lah "$install_dir"/fonts/OTC
-
-mv "$install_dir"/fonts/OTC/SourceHanSans-VF.ttf.ttc "$install_dir/static/fonts/source_han_sans"
+mv "$install_dir"/fonts/OTC/SourceHanSans-VF.ttf.ttc "$install_dir/static/fonts/"
 ynh_safe_rm "$install_dir"/fonts
 
 #=================================================
