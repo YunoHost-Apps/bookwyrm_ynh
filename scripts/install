@@ -26,6 +26,8 @@ mkdir -p "$install_dir"/static/fonts
 mv "$install_dir"/fonts/OTC/SourceHanSans-VF.ttf.ttc "$install_dir/static/fonts/"
 ynh_safe_rm "$install_dir"/fonts
 
+chown -R "$app":www-data "$install_dir"/static
+
 #=================================================
 # CONFIGURE THEN INSTALL SCRIPT AND DEPENDENCIES
 #=================================================
