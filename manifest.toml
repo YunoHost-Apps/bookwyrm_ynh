@@ -5,7 +5,7 @@ name = "BookWyrm"
 description.en = "Platform for social reading"
 description.fr = "Plateforme de lecture sociale"
 
-version = "0.7.5~ynh1"
+version = "0.7.5~ynh2"
 
 maintainers = ["oufmilo"]
 
@@ -55,8 +55,8 @@ ram.runtime = "50M"
         autoupdate.strategy = "latest_github_release"
 
         [resources.sources.fonts]
-        url = "https://github.com/adobe-fonts/source-han-sans/releases/download/2.005R/02_SourceHanSans-VF.zip"
-        sha256 = "e5944ea7253878409232f1ffad464e9e93879c0207eaf2960bba327eef89ed81"
+        url = "https://github.com/adobe-fonts/source-han-sans/archive/refs/tags/2.005.tar.gz"
+        sha256 = "56594dd9bb8868f584163014a240f462d1e5e80f9e64b339c44f14a87a4a45c6"
         in_subdir=true
         autoupdate.strategy = "latest_github_release"
         autoupdate.upstream = "https://github.com/adobe-fonts/source-han-sans"
