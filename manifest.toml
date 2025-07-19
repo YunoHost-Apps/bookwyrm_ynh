@@ -58,8 +58,8 @@ ram.runtime = "50M"
         url = "https://github.com/adobe-fonts/source-han-sans/releases/download/2.005R/02_SourceHanSans-VF.zip"
         sha256 = "e5944ea7253878409232f1ffad464e9e93879c0207eaf2960bba327eef89ed81"
         in_subdir=true
-        autoupdate.strategy = "latest_github_release"
-        autoupdate.upstream = "https://github.com/adobe-fonts/source-han-sans"
+        #autoupdate.strategy = "latest_github_release"
+        #autoupdate.upstream = "https://github.com/adobe-fonts/source-han-sans"
 
     [resources.system_user]
     allow_email = true
