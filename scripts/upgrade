@@ -4,6 +4,8 @@
 source /usr/share/yunohost/helpers
 
 key=$(ynh_string_random --length=32)
+email_host=$(cat /etc/yunohost/current_host)
+ynh_app_setting_set --key=email_host --value="$email_host"
 
 #=================================================
 # STOP SYSTEMD SERVICE

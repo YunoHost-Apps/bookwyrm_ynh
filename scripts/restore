@@ -4,6 +4,7 @@
 source /usr/share/yunohost/helpers
 
 db_name=$(ynh_app_setting_get --key=db_name)
+email_host=$(cat /etc/yunohost/current_host)
 
 # Configure redis
 redis_activity_db=$(ynh_redis_get_free_db)
